@@ -7,8 +7,23 @@ import time
 # need projectile
 # need enemy tj
 # need level/location
+#
+class cammper:
+    def __init__(self, screen, x, y, speedx, speedy, health, state, ):
+        self.screen = screen
+        self.x = x
+        self.y = y
+        self.speedx =
+        self.speedy =
 
-class cammper
+    def move(self):
+        self.
+
+    def draw(self):
+
+
+
+
 
 
 def main():
