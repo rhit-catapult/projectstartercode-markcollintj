@@ -35,4 +35,6 @@ def main():
         # don't forget the update, otherwise nothing will show up!
         pygame.display.update()
 
-main()
+
+if __name__ == "__main__":
+    main()
