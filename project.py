@@ -2,6 +2,11 @@ import pygame
 import sys
 import random
 import time
+# need counsalur imagise (mabye as caricter salection)
+# need player charicter
+# need projectile
+# need enemy
+# need level/location
 
 
 def main():
