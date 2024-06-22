@@ -4,7 +4,7 @@ import random
 import time
 # need counsalur imagise (mabye as caricter salection) tj on free time
 # need player charicter
-# need projectile
+# need projectile: Mark
 # need enemy
 # need level/location
 

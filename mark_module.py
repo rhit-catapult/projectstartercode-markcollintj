@@ -3,6 +3,9 @@ import sys
 import random
 import time
 
+class Projectile:
+    def __init__(self,):
+
 def main():
     # turn on pygame
     pygame.init()
