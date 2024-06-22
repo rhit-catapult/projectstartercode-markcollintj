@@ -2,13 +2,14 @@ import pygame
 import sys
 import random
 import time
+import Collin_module
 # need counsalur imagise (mabye as caricter salection) tj on free time
 # need player charicter
 # need projectile
 # need enemy tj
 # need level/location
 #
-class cammper:
+class cammperhealthy:
     def __init__(self, screen, x, y, speedx, speedy, health, state, ):
         self.screen = screen
         self.x = x
@@ -20,6 +21,45 @@ class cammper:
         self.
 
     def draw(self):
+        if Projectilehits == 1:
+            self.screen.blit(self.image_no_umbrella, (self.x, self.y))
+        else :
+            self.screen.blit(self.image_umbrella, (self.x, self.y))
+class cammperhurt:
+    def __init__(self, screen, x, y, speedx, speedy, health, state, ):
+        self.screen = screen
+        self.x = x
+        self.y = y
+        self.speedx =
+        self.speedy =
+
+    def move(self):
+        self.
+
+    def draw(self):
+        if self.Projectilehits == 1:
+            self.screen.blit(self.image_no_umbrella, (self.x, self.y))
+        else :
+            self.screen.blit(self.image_umbrella, (self.x, self.y))
+
+class cammperdead:
+    def __init__(self, screen, x, y, speedx, speedy, health, state, ):
+        self.screen = screen
+        self.x = x
+        self.y = y
+        self.speedx =
+        self.speedy =
+
+    def move(self):
+        self.
+
+    def draw(self):
+        if Projectilehits == 1:
+            self.screen.blit(self.image_no_umbrella, (self.x, self.y))
+        else :
+            self.screen.blit(self.image_umbrella, (self.x, self.y))
+
+
 
 
 
