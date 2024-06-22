@@ -5,8 +5,10 @@ import time
 # need counsalur imagise (mabye as caricter salection) tj on free time
 # need player charicter
 # need projectile
-# need enemy
+# need enemy tj
 # need level/location
+
+class cammper
 
 
 def main():
