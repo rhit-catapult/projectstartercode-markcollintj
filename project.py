@@ -8,6 +8,7 @@ import time
 # need enemy
 # need level/location
 
+
 def main():
     # turn on pygame
     pygame.init()
