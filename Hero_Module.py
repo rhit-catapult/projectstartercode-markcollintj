@@ -7,7 +7,6 @@ import math
 
 class Bullet:
     def __init__(self, screen: pygame.surface, x, y):
-        """ Creates a Raindrop sprite that travels down at a random speed. """
         self.screen = screen
         self.x = x
         self.y = y
@@ -28,8 +27,6 @@ class Hero:
         self.y = y
         self.speedx = 5
         self.speedy = 5
-        self.raidius = 20
-        self.color = pygame.Color("Blue")
         self.image = pygame.image.load("Counselor.png")
         self.bullets = []
         self.angle = 0
@@ -58,6 +55,13 @@ class Hero:
     def shoot(self):
         new_bullet = Bullet(self.screen,self.x + 30,self.y + 30)
         self.bullets.append(new_bullet)
+
+
+    def hit_by(self, camper):
+
+        hero_hit_box = pygame.Rect(self.x, self.y, self.image.get_width(), self.image.get_height())
+        return hero_hit_box.collidepoint(camper.x,camper.y)
+
 
 def main():
 
@@ -93,7 +97,6 @@ def main():
 
         if pressed_keys[pygame.K_UP]:
             heros.y -= 5
-            #print("h8")
         if pressed_keys[pygame.K_DOWN]:
             heros.move(0, 5)
         if pressed_keys[pygame.K_LEFT]:
@@ -103,12 +106,11 @@ def main():
 
 
         if pressed_keys[pygame.K_w]:
-                heros.y -= 5
-
+            heros.y -= 5
         if pressed_keys[pygame.K_s]:
             heros.move(0, 5)
         if pressed_keys[pygame.K_a]:
-             heros.move(-5, 0)
+            heros.move(-5, 0)
         if pressed_keys[pygame.K_d]:
             heros.move(5, 0)
 
