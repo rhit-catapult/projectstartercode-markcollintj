@@ -3,20 +3,21 @@ import sys
 import random
 import time
 import math
+import mark_module
 
 
-class Bullet:
-    def __init__(self, screen: pygame.surface, x, y):
-        self.screen = screen
-        self.x = x
-        self.y = y
-        self.speed = 10
-    def move(self):
-        """ Move the self.y value of the Raindrop down the screen (y increase) at the self.speed. """
-        self.y -= self.speed
-    def draw(self):
-      pygame.draw.line(self.screen, "Green",(self.x, self.y),(self.x, self.y + 5) )
-
+#class Bullet:
+    #def __init__(self, screen: pygame.surface, x, y):
+        #self.screen = screen
+        #self.x = x
+       # self.y = y
+       # self.speed = 10
+   # def move(self):
+   #     """ Move the self.y value of the Raindrop down the screen (y increase) at the self.speed. """
+  #      self.y -= self.speed
+ #   def draw(self):
+ #     pygame.draw.line(self.screen, "Green",(self.x, self.y),(self.x, self.y + 5) )
+#
 
 
 
@@ -53,7 +54,7 @@ class Hero:
 
 
     def shoot(self):
-        new_bullet = Bullet(self.screen,self.x + 30,self.y + 30)
+        new_bullet = mark_module.Projectile(self.screen,pygame.mouse.get_pos())
         self.bullets.append(new_bullet)
 
 
@@ -61,6 +62,21 @@ class Hero:
 
         hero_hit_box = pygame.Rect(self.x, self.y, self.image.get_width(), self.image.get_height())
         return hero_hit_box.collidepoint(camper.x,camper.y)
+
+class barrier:
+    def __init__(self, screen: pygame.Surface, x, y):
+
+        self.screen = screen
+        self.x = x
+        self.y = y
+
+
+    #def collide_check(self):
+
+
+
+
+
 
 
 def main():
@@ -82,8 +98,7 @@ def main():
             if event.type == pygame.QUIT:
                 sys.exit()
 
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                heros.shoot()
+        Projectile.x =
 
 
         screen.fill((0, 0, 0))
@@ -114,11 +129,19 @@ def main():
         if pressed_keys[pygame.K_d]:
             heros.move(5, 0)
 
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            heros.shoot()
 
-        for Bullet in heros.bullets:
-            Bullet.move()
-            Bullet.draw()
-
+        for moving_projectile in heros.bullets:
+            if moving_projectile.off_screen():
+                heros.bullets.remove(moving_projectile)
+            if moving_projectile.not_moving():
+                heros.bullets.remove(moving_projectile)
+            if not heros.bullets:
+                pass
+            else:
+                moving_projectile.move()
+                moving_projectile.draw()
 
         heros.rotate()
 
