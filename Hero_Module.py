@@ -2,7 +2,7 @@ import pygame
 import sys
 import random
 import time
-
+import math
 
 
 class Bullet:
@@ -30,18 +30,33 @@ class Hero:
         self.speedy = 5
         self.raidius = 20
         self.color = pygame.Color("Blue")
+        self.image = pygame.image.load("Counselor.png")
         self.bullets = []
+        self.angle = 0
+        self.mouse_pos = pygame.mouse.get_pos()
     def move(self, xa, ya):
 
         self.y += ya
         self.x += xa
 
 
+
     def draw(self):
-        pygame.draw.circle(self.screen, self.color, (self.x, self.y), self.raidius)
+
+        rotated_image = pygame.transform.rotate(self.image, self.angle)
+
+        self.screen.blit(rotated_image, (self.x, self.y))
+
+    def rotate(self):
+        dx = pygame.mouse.get_pos()[0] - (self.x + self.image.get_width() / 2)
+        dy = pygame.mouse.get_pos()[1] - (self.y + self.image.get_height() / 2)
+
+        self.angle = math.degrees(math.atan2(-dy, dx)) - 90
+
+
 
     def shoot(self):
-        new_bullet = Bullet(self.screen,self.x,self.y)
+        new_bullet = Bullet(self.screen,self.x + 30,self.y + 30)
         self.bullets.append(new_bullet)
 
 def main():
@@ -68,10 +83,14 @@ def main():
 
 
         screen.fill((0, 0, 0))
+        pressed_keys = pygame.key.get_pressed()
+
+        if pressed_keys[pygame.K_h]:
+            heros.rotate()
+
 
         heros.draw()
 
-        pressed_keys = pygame.key.get_pressed()
         if pressed_keys[pygame.K_UP]:
             heros.y -= 5
             #print("h8")
@@ -83,11 +102,23 @@ def main():
             heros.move(5, 0)
 
 
+        if pressed_keys[pygame.K_w]:
+                heros.y -= 5
+
+        if pressed_keys[pygame.K_s]:
+            heros.move(0, 5)
+        if pressed_keys[pygame.K_a]:
+             heros.move(-5, 0)
+        if pressed_keys[pygame.K_d]:
+            heros.move(5, 0)
+
+
         for Bullet in heros.bullets:
             Bullet.move()
             Bullet.draw()
 
 
+        heros.rotate()
 
 
         pygame.display.update()
