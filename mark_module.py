@@ -2,22 +2,23 @@ import pygame
 import sys
 import math
 import time
+import Hero_Module
 
 projectiles = []
 
 
 class Projectile:
-    def __init__(self, screen, target):
+    def __init__(self, screen, target, x, y):
         """target is cursor position at the time mouse was clicked"""
         self.screen = screen
         self.radius = 5
         self.color = (128, 128, 128)
         self.speed = 5
-        self.x = self.screen.get_width() / 2
-        self.y = self.screen.get_height() / 2
+        #self.x = self.screen.get_width() / 2
+        #self.y = self.screen.get_height() / 2
         self.target = target
-        # self.x = Hero.x
-        # self.y = Hero.y
+        self.x = x
+        self.y = y
         self.delta_x = target[0] - self.x
         self.delta_y = target[1] - self.y
         self.q = math.atan2(self.delta_y, self.delta_x)

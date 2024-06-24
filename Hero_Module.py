@@ -54,7 +54,7 @@ class Hero:
 
 
     def shoot(self):
-        new_bullet = mark_module.Projectile(self.screen,pygame.mouse.get_pos())
+        new_bullet = mark_module.Projectile(self.screen,pygame.mouse.get_pos(), self.x,self.y)
         self.bullets.append(new_bullet)
 
 
@@ -90,7 +90,7 @@ def main():
     #pressed_keys = pygame.key.get_pressed()
     clock = pygame.time.Clock()
 
-    heros = Hero(screen, random.randint(100,screen.get_width()-100), random.randint(100,screen.get_height()-100))
+    the_hero = Hero(screen, random.randint(100,screen.get_width()-100), random.randint(100,screen.get_height()-100))
 
     while True:
         clock.tick(60)
@@ -98,52 +98,52 @@ def main():
             if event.type == pygame.QUIT:
                 sys.exit()
 
-        Projectile.x =
+
 
 
         screen.fill((0, 0, 0))
         pressed_keys = pygame.key.get_pressed()
 
         if pressed_keys[pygame.K_h]:
-            heros.rotate()
+            the_hero.rotate()
 
 
-        heros.draw()
+        the_hero.draw()
 
         if pressed_keys[pygame.K_UP]:
-            heros.y -= 5
+            the_hero.y -= 5
         if pressed_keys[pygame.K_DOWN]:
-            heros.move(0, 5)
+            the_hero.move(0, 5)
         if pressed_keys[pygame.K_LEFT]:
-            heros.move(-5, 0)
+            the_hero.move(-5, 0)
         if pressed_keys[pygame.K_RIGHT]:
-            heros.move(5, 0)
+            the_hero.move(5, 0)
 
 
         if pressed_keys[pygame.K_w]:
-            heros.y -= 5
+            the_hero.y -= 5
         if pressed_keys[pygame.K_s]:
-            heros.move(0, 5)
+            the_hero.move(0, 5)
         if pressed_keys[pygame.K_a]:
-            heros.move(-5, 0)
+            the_hero.move(-5, 0)
         if pressed_keys[pygame.K_d]:
-            heros.move(5, 0)
+            the_hero.move(5, 0)
 
         if event.type == pygame.MOUSEBUTTONDOWN:
-            heros.shoot()
+            the_hero.shoot()
 
-        for moving_projectile in heros.bullets:
+        for moving_projectile in the_hero.bullets:
             if moving_projectile.off_screen():
-                heros.bullets.remove(moving_projectile)
+                the_hero.bullets.remove(moving_projectile)
             if moving_projectile.not_moving():
-                heros.bullets.remove(moving_projectile)
-            if not heros.bullets:
+                the_hero.bullets.remove(moving_projectile)
+            if not the_hero.bullets:
                 pass
             else:
                 moving_projectile.move()
                 moving_projectile.draw()
 
-        heros.rotate()
+        the_hero.rotate()
 
 
         pygame.display.update()
