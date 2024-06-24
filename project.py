@@ -19,7 +19,6 @@ def main():
 
     pygame.init()
 
-
     pygame.display.set_caption("Cool Project")
 
     screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
