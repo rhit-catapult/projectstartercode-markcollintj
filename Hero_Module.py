@@ -65,9 +65,7 @@ def main():
 
             if event.type == pygame.MOUSEBUTTONDOWN:
                 heros.shoot()
-                print("you shot")
 
-            # TODO: Add you events code
 
         screen.fill((0, 0, 0))
 
