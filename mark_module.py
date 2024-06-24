@@ -5,6 +5,7 @@ import time
 
 projectiles = []
 
+
 class Projectile:
     def __init__(self, screen, target):
         """target is cursor position at the time mouse was clicked"""
@@ -32,7 +33,10 @@ class Projectile:
         self.y += self.small_delta_y
 
     def off_screen(self):
-        return self.x - self.radius > self.screen.get_width() or self.x + self.radius < 0 or self.y - self.radius > self.screen.get_height() or self.y + self.radius < 0
+        return self.x - self.radius > self.screen.get_width() \
+               or self.x + self.radius < 0 \
+               or self.y - self.radius > self.screen.get_height() \
+               or self.y + self.radius < 0
 
     def not_moving(self):
         check_x = self.delta_x == 0
@@ -45,22 +49,18 @@ class Projectile:
         if self.hit_box.colliderect(camperhealthy.hit_box):
             projectiles.remove(self)
 
+
 def shoot(screen):
-        projectile = Projectile(screen, pygame.mouse.get_pos())
-        projectiles.append(projectile)
-        last_fire_time = time.time()
-        return last_fire_time
+    projectile = Projectile(screen, pygame.mouse.get_pos())
+    projectiles.append(projectile)
+    last_fire_time = time.time()
+    return last_fire_time
+
 
 def main():
-    # turn on pygame
     pygame.init()
-
-    # create a screen
     pygame.display.set_caption("Mark's module")
-    # TODO: Change the size of the screen as you see fit!
     screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
-
-    # let's set the framerate
     clock = pygame.time.Clock()
     last_fire_time = 0
 
@@ -76,25 +76,22 @@ def main():
         pressed_keys = pygame.key.get_pressed()
         if pressed_keys[pygame.K_ESCAPE]:
             sys.exit()
-            # TODO: Add you events code
 
-        # TODO: Fill the screen with whatever background color you like!
         screen.fill((255, 255, 255))
         pygame.draw.circle(screen, (0, 0, 0), (screen.get_width() / 2, screen.get_height() / 2), 10)
-        # TODO: Add your project code
+
         for moving_projectile in projectiles:
             if moving_projectile.off_screen():
                 projectiles.remove(moving_projectile)
             if moving_projectile.not_moving():
                 projectiles.remove(moving_projectile)
-            if projectiles == []:
+            if not projectiles:
                 pass
             else:
                 moving_projectile.move()
                 moving_projectile.draw()
-        print(len(projectiles))
-        # don't forget the update, otherwise nothing will show up!
         pygame.display.update()
+
 
 if __name__ == "__main__":
     main()
