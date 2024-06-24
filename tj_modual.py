@@ -117,10 +117,6 @@ class Cammperdead:
 
 
 
-
-
-
-
 pygame.transform.scale()
 def main():
     # turn on pygame
@@ -130,7 +126,8 @@ def main():
     pygame.display.set_caption("Cool Project")
     # TODO: Change the size of the screen as you see fit!
     screen = pygame.display.set_mode((640, 480))
-
+    width = screen.get_width()
+    hight = screen.get_height()
     # let's set the framerate
     clock = pygame.time.Clock()
     hurt = []
@@ -142,17 +139,17 @@ def main():
         spawnernumber = random.randint(0, "spawns")
         waveside = random.randint(1,4)
         if waveside == 1:
-            spawnsidex = 0
-            spawnsidey = 0
+            spawnsidex = random.randint(1, "width")
+            spawnsidey = 1
         if waveside == 2:
-            spawnsidex = 0
-            spawnsidey = 0
+            spawnsidex = random.randint(1, "width")
+            spawnsidey = hight
         if waveside == 3:
             spawnsidex = 0
-            spawnsidey = 0
+            spawnsidey = random.randint(1, "hight")
         if waveside == 4:
-            spawnsidex = 0
-            spawnsidey = 0
+            spawnsidex = width
+            spawnsidey = random.randint(1, "hight")
         for i in range(1, spawnernumber):
             camperhurt = Cammperhurt(screen, (Cammperhealthy.self.x, Cammperhealthy.self.y), )
             hurt.append(camperhurt)
