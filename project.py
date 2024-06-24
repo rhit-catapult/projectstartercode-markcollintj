@@ -35,6 +35,8 @@ def main():
         pressed_keys = pygame.key.get_pressed()
         if pressed_keys[pygame.K_p]:
             sys.exit()
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            the_hero.shoot()
 
         pressed_keys = pygame.key.get_pressed()
         screen.fill((255, 255, 255))
@@ -59,8 +61,8 @@ def main():
         if pressed_keys[pygame.K_d]:
             the_hero.move(5, 0)
 
-        if event.type == pygame.MOUSEBUTTONDOWN:
-            the_hero.shoot()
+        #if event.type == pygame.MOUSEBUTTONDOWN:
+        #    the_hero.shoot()
 
         for moving_projectile in the_hero.bullets:
             if moving_projectile.off_screen():
