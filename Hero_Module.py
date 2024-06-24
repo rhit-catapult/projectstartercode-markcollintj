@@ -59,10 +59,15 @@ class Hero:
         last_fire_time = time.time()
         return last_fire_time
 
-    def hit_by(self, camper):
+    def hit_by(self, camperhealthy, camperhurt):
 
         hero_hit_box = pygame.Rect(self.x, self.y, self.image.get_width(), self.image.get_height())
-        return hero_hit_box.collidepoint(camper.x,camper.y)
+
+
+        if hero_hit_box.colliderect(camperhurt.hit_box):
+            return hero_hit_box.collidepoint(camperhealthy.x, camperhealthy.y)
+        if hero_hit_box.colliderect(camperhealthy.hit_box):
+            return hero_hit_box.collidepoint(camperhurt.x,camperhurt.y)
 
 class barrier:
     def __init__(self, screen: pygame.Surface, x, y):
