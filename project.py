@@ -18,7 +18,7 @@ import mark_module
 def main():
 
     pygame.init()
-
+    pygame.mixer.music.load("spook4.mp3")
     grass = pygame.image.load("grass.png")
     pygame.display.set_caption("Cool Project")
     screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
@@ -26,6 +26,7 @@ def main():
     the_hero = Hero_Module.Hero(screen, random.randint(100,screen.get_width()-100), random.randint(100,screen.get_height()-100))
     last_fire_time = 0
 
+    pygame.mixer.music.play(-1)
     clock = pygame.time.Clock()
     while True:
         clock.tick(60)
