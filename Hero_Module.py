@@ -54,8 +54,10 @@ class Hero:
 
 
     def shoot(self):
+        Shots = pygame.mixer.Sound("GUN_sound.wav")
         new_bullet = mark_module.Projectile(self.screen,pygame.mouse.get_pos(), self.x,self.y)
         self.bullets.append(new_bullet)
+        Shots.play()
         last_fire_time = time.time()
         return last_fire_time
 
