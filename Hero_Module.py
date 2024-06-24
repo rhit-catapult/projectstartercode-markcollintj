@@ -56,7 +56,8 @@ class Hero:
     def shoot(self):
         new_bullet = mark_module.Projectile(self.screen,pygame.mouse.get_pos(), self.x,self.y)
         self.bullets.append(new_bullet)
-
+        last_fire_time = time.time()
+        return last_fire_time
 
     def hit_by(self, camper):
 

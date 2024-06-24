@@ -24,7 +24,7 @@ def main():
 
     screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
     the_hero = Hero_Module.Hero(screen, random.randint(100,screen.get_width()-100), random.randint(100,screen.get_height()-100))
-
+    last_fire_time = 0
 
     clock = pygame.time.Clock()
     while True:
@@ -36,7 +36,9 @@ def main():
         if pressed_keys[pygame.K_p]:
             sys.exit()
         if event.type == pygame.MOUSEBUTTONDOWN:
-            the_hero.shoot()
+            if time.time() - last_fire_time > 0.4:
+                new_fire_time = the_hero.shoot()
+                last_fire_time = new_fire_time
 
         pressed_keys = pygame.key.get_pressed()
         screen.fill((255, 255, 255))
