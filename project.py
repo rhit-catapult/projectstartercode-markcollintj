@@ -19,9 +19,10 @@ def main():
 
     pygame.init()
 
-    pygame.display.set_caption("Cool Project")
     grass = pygame.image.load("grass.png")
+    pygame.display.set_caption("Cool Project")
     screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
+    grass2 = pygame.transform.scale(grass, (screen.get_width(), screen.get_height()))
     the_hero = Hero_Module.Hero(screen, random.randint(100,screen.get_width()-100), random.randint(100,screen.get_height()-100))
     last_fire_time = 0
 
@@ -31,18 +32,16 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit()
-        pressed_keys = pygame.key.get_pressed()
-        if pressed_keys[pygame.K_p]:
-            sys.exit()
-        if event.type == pygame.MOUSEBUTTONDOWN:
-            if time.time() - last_fire_time > 0.4:
-                new_fire_time = the_hero.shoot()
-                last_fire_time = new_fire_time
+            pressed_keys = pygame.key.get_pressed()
+            if pressed_keys[pygame.K_p]:
+                sys.exit()
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if time.time() - last_fire_time > 0.4:
+                    new_fire_time = the_hero.shoot()
+                    last_fire_time = new_fire_time
 
-        grass2 = pygame.transform.scale(grass, (screen.get_width(), screen.get_height()))
         screen.fill((255,255,255))
         pressed_keys = pygame.key.get_pressed()
-
         screen.blit(grass2, (0,0))
 
 
