@@ -70,7 +70,7 @@ def main():
             if event.type == pygame.QUIT:
                 sys.exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
-                if time.time() - last_fire_time > 0.5:
+                if time.time() - last_fire_time > 0.4:
                     new_fire_time = shoot(screen)
                     last_fire_time = new_fire_time
         pressed_keys = pygame.key.get_pressed()
