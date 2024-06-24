@@ -24,7 +24,6 @@ def main():
     screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
     the_hero = Hero_Module.Hero(screen, random.randint(100,screen.get_width()-100), random.randint(100,screen.get_height()-100))
     last_fire_time = 0
-    #grass = pygame.transform.scale(screen, (500, 500))
 
     clock = pygame.time.Clock()
     while True:

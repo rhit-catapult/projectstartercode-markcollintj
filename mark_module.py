@@ -12,7 +12,7 @@ class Projectile:
         """target is cursor position at the time mouse was clicked"""
         self.screen = screen
         self.radius = 5
-        self.color = (128, 128, 128)
+        self.color = ("Pink")
         self.speed = 5
         #self.x = self.screen.get_width() / 2
         #self.y = self.screen.get_height() / 2
