@@ -20,10 +20,11 @@ def main():
     pygame.init()
 
     pygame.display.set_caption("Cool Project")
-
+    grass = pygame.image.load("grass.png")
     screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
     the_hero = Hero_Module.Hero(screen, random.randint(100,screen.get_width()-100), random.randint(100,screen.get_height()-100))
     last_fire_time = 0
+    #grass = pygame.transform.scale(screen, (500, 500))
 
     clock = pygame.time.Clock()
     while True:
@@ -39,8 +40,12 @@ def main():
                 new_fire_time = the_hero.shoot()
                 last_fire_time = new_fire_time
 
+        grass2 = pygame.transform.scale(grass, (screen.get_width(), screen.get_height()))
+        screen.fill((255,255,255))
         pressed_keys = pygame.key.get_pressed()
-        screen.fill((255, 255, 255))
+
+        screen.blit(grass2, (0,0))
+
 
         the_hero.draw()
 
