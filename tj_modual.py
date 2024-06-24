@@ -18,7 +18,7 @@ class Cammperhealthy:
         self.screen = screen
         self.x = x
         self.y = y
-        self.speedx = 3((Hero_Module.Hero.self.x - self.x)/(abs(Hero_Module.Hero.self.x- self.x)))
+        self.speedx = 3((Hero_Module.Hero.x - self.x)/(abs(Hero_Module.Hero.x- self.x)))
         self.speedy = 3((Hero_Module.Hero.self.y - self.y)/(abs(Hero_Module.Hero.self.y- self.y)))
         self.imageunharmed = pygame.image.load("sprites/download-Photoroom.png")
         self.imageunharmedright = pygame.image.load("sprites/download-Photoroom.png")
@@ -118,10 +118,6 @@ class Cammperdead:
 
 
 
-
-
-
-pygame.transform.scale()
 def main():
     # turn on pygame
     pygame.init()
@@ -130,41 +126,43 @@ def main():
     pygame.display.set_caption("Cool Project")
     # TODO: Change the size of the screen as you see fit!
     screen = pygame.display.set_mode((640, 480))
-
+    width = screen.get_width()
+    hight = screen.get_height()
     # let's set the framerate
     clock = pygame.time.Clock()
+    clock2 = clock
     hurt = []
     healthy = []
     dead = []
-    round = clock / 10
+    round = clock2/10
     spawns = round*5
     if clock%10:
         spawnernumber = random.randint(0, "spawns")
         waveside = random.randint(1,4)
         if waveside == 1:
-            spawnsidex = 0
-            spawnsidey = 0
+            spawnsidex = random.randint(1, "width")
+            spawnsidey = 1
         if waveside == 2:
-            spawnsidex = 0
-            spawnsidey = 0
+            spawnsidex = random.randint(1, "width")
+            spawnsidey = hight
         if waveside == 3:
             spawnsidex = 0
-            spawnsidey = 0
+            spawnsidey = random.randint(1, "hight")
         if waveside == 4:
-            spawnsidex = 0
-            spawnsidey = 0
+            spawnsidex = width
+            spawnsidey = random.randint(1, "hight")
         for i in range(1, spawnernumber):
             camperhurt = Cammperhurt(screen, (Cammperhealthy.self.x, Cammperhealthy.self.y), )
             hurt.append(camperhurt)
         for i in range(1, (spawns-spawnernumber)/2):
             camperhealthy = Cammperhealthy(screen, (spawnsidex, spawnsidey))
             healthy.append(camperhealthy)
-    if mark_module.Projectile.___ >= Cammperhealthy.self.x and mark_module.Projectile.___ <= Cammperhealthy.self.x + self.imagedead.get_width(Cammperhealthy) and mark_module.Projectile.___ >= Cammperhealthy.self.y and mark_module.Projectile.___ <= Cammperhealthy.self.y + self.imagedead.get_hight(Cammperhealthy):
+    if Cammperhealthy.hitby(mark_module.Projectile):
         for i in range(1,1):
             hurtcamper = Cammperhurt(screen, (Cammperhealthy.self.x, Cammperhealthy.self.y), )
             hurt.append(hurtcamper)
             healthy.remove()
-    if mark_module.Projectile.___ >= Cammperhurt.self.x and mark_module.Projectile.___ <= Cammperhurt.self.x + self.imagedead.get_width() and mark_module.Projectile.___ >= Cammperhurt.self.y and mark_module.Projectile.___ <= Cammperhurt.self.y + self.imagedead.get_hight(Cammperhurt):
+    if Cammperhurt.hitby(mark_module.Projectile):
         for i in range(1, len(dead)):
             camperdead = Cammperdead(screen, (Cammperhurt.self.x, Cammperhurt.self.y) )
             dead.append(camperdead)
