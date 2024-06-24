@@ -9,6 +9,7 @@ import time
 # need level/location
 
 
+
 def main():
     # turn on pygame
     pygame.init()
@@ -24,7 +25,6 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit()
-
         pressed_keys = pygame.key.get_pressed()
         if pressed_keys[pygame.K_p]:
             sys.exit()
@@ -35,6 +35,7 @@ def main():
         screen.fill((255, 255, 255))
 
         # TODO: Add your project code
+
 
         # don't forget the update, otherwise nothing will show up!
         pygame.display.update()
