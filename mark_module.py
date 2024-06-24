@@ -1,6 +1,8 @@
 import pygame
 import sys
 import math
+import Hero_Module
+import tj_modual
 
 projectiles = []
 
@@ -11,16 +13,17 @@ class Projectile:
         self.radius = 5
         self.color = (128, 128, 128)
         self.speed = 5
-        self.x = 20
-        self.y = 20
+        self.x = 300
+        self.y = 300
         self.target = target
         # self.x = Hero.x
         # self.y = Hero.y
-        self.delta_x = self.x - target[0]
-        self.delta_y = self.y - target[1]
-        self.q = math.atan(self.delta_y / self.delta_x)
-        self.small_delta_x = self.speed * math.cos(self.q)
-        self.small_delta_y = self.speed * math.sin(self.q)
+        self.delta_x = target[0] - self.x
+        self.delta_y = target[1] - self.y
+        self.q = math.atan2(self.delta_y, self.delta_x)
+        self.small_delta_x = math.cos(self.q) * self.speed
+        self.small_delta_y = math.sin(self.q) * self.speed
+        self.hit_box = pygame.Rect(self.x - self.radius, self.y - self.radius, self.radius * 2, self.radius * 2)
 
     def draw(self):
         pygame.draw.circle(self.screen, self.color, (self.x, self.y), self.radius)
@@ -28,12 +31,25 @@ class Projectile:
     def move(self):
         self.x += self.small_delta_x
         self.y += self.small_delta_y
+
     def off_screen(self):
         return self.x - self.radius > self.screen.get_width() or self.x + self.radius < 0 or self.y - self.radius > self.screen.get_height() or self.y + self.radius < 0
+
+    def not_moving(self):
+        check_x = self.delta_x == 0
+        check_y = self.delta_y == 0
+        return check_x and check_y
+
+    def hits(self, camperhealthy, camperhurt):
+        if self.hit_box.colliderect(camperhurt.hit_box):
+            projectiles.remove(self)
+        if self.hit_box.colliderect(camperhealthy.hit_box):
+            projectiles.remove(self)
 
 def shoot(screen):
     projectile = Projectile(screen, pygame.mouse.get_pos())
     projectiles.append(projectile)
+
 def main():
     # turn on pygame
     pygame.init()
@@ -53,11 +69,12 @@ def main():
                 sys.exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
                 shoot(screen)
-            if event.type == pygame.K_ESCAPE:
-                sys.exit()
         pressed_keys = pygame.key.get_pressed()
         if pressed_keys[pygame.K_ESCAPE]:
             sys.exit()
+        if pressed_keys[pygame.K_p]:
+            for moving_projectiles in projectiles:
+                print(moving_projectiles.small_delta_x, moving_projectiles.small_delta_y)
             # TODO: Add you events code
 
         # TODO: Fill the screen with whatever background color you like!
@@ -65,10 +82,15 @@ def main():
 
         # TODO: Add your project code
         for moving_projectile in projectiles:
-            moving_projectile.move()
-            moving_projectile.draw()
             if moving_projectile.off_screen():
                 projectiles.remove(moving_projectile)
+            if moving_projectile.not_moving():
+                projectiles.remove(moving_projectile)
+            if projectiles == []:
+                pass
+            else:
+                moving_projectile.move()
+                moving_projectile.draw()
         print(len(projectiles))
         # don't forget the update, otherwise nothing will show up!
         pygame.display.update()
