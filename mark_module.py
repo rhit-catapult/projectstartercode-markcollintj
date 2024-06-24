@@ -1,8 +1,7 @@
 import pygame
 import sys
 import math
-import Hero_Module
-import tj_modual
+import time
 
 projectiles = []
 
@@ -13,8 +12,8 @@ class Projectile:
         self.radius = 5
         self.color = (128, 128, 128)
         self.speed = 5
-        self.x = 300
-        self.y = 300
+        self.x = self.screen.get_width() / 2
+        self.y = self.screen.get_height() / 2
         self.target = target
         # self.x = Hero.x
         # self.y = Hero.y
@@ -47,8 +46,10 @@ class Projectile:
             projectiles.remove(self)
 
 def shoot(screen):
-    projectile = Projectile(screen, pygame.mouse.get_pos())
-    projectiles.append(projectile)
+        projectile = Projectile(screen, pygame.mouse.get_pos())
+        projectiles.append(projectile)
+        last_fire_time = time.time()
+        return last_fire_time
 
 def main():
     # turn on pygame
@@ -61,6 +62,7 @@ def main():
 
     # let's set the framerate
     clock = pygame.time.Clock()
+    last_fire_time = 0
 
     while True:
         clock.tick(60)
@@ -68,18 +70,17 @@ def main():
             if event.type == pygame.QUIT:
                 sys.exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
-                shoot(screen)
+                if time.time() - last_fire_time > 0.5:
+                    new_fire_time = shoot(screen)
+                    last_fire_time = new_fire_time
         pressed_keys = pygame.key.get_pressed()
         if pressed_keys[pygame.K_ESCAPE]:
             sys.exit()
-        if pressed_keys[pygame.K_p]:
-            for moving_projectiles in projectiles:
-                print(moving_projectiles.small_delta_x, moving_projectiles.small_delta_y)
             # TODO: Add you events code
 
         # TODO: Fill the screen with whatever background color you like!
         screen.fill((255, 255, 255))
-
+        pygame.draw.circle(screen, (0, 0, 0), (screen.get_width() / 2, screen.get_height() / 2), 10)
         # TODO: Add your project code
         for moving_projectile in projectiles:
             if moving_projectile.off_screen():
