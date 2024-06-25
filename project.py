@@ -48,14 +48,14 @@ def main():
 
         the_hero.draw()
 
-        if pressed_keys[pygame.K_UP]:
-            the_hero.y -= 5
-        if pressed_keys[pygame.K_DOWN]:
-            the_hero.move(0, 5)
-        if pressed_keys[pygame.K_LEFT]:
-            the_hero.move(-5, 0)
-        if pressed_keys[pygame.K_RIGHT]:
-            the_hero.move(5, 0)
+        # if pressed_keys[pygame.K_UP]:
+        #     the_hero.y -= 5
+        # if pressed_keys[pygame.K_DOWN]:
+        #     the_hero.move(0, 5)
+        # if pressed_keys[pygame.K_LEFT]:
+        #     the_hero.move(-5, 0)
+        # if pressed_keys[pygame.K_RIGHT]:
+        #     the_hero.move(5, 0)
 
         if pressed_keys[pygame.K_w]:
             the_hero.y -= 5
