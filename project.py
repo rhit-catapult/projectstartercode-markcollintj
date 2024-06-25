@@ -5,7 +5,7 @@ import time
 import math
 import Hero_Module
 import mark_module
-
+import opening_screen
 
 # need counsalur imagise (mabye as caricter salection) tj on free time
 # need player charicter
@@ -28,10 +28,36 @@ def main():
     grass2 = pygame.transform.scale(grass, (screen.get_width(), screen.get_height()))
     the_hero = Hero_Module.Hero(screen, random.randint(100,screen.get_width()-100), random.randint(100,screen.get_height()-100))
     last_fire_time = 0
-
+    Menu1 = pygame.image.load("sprites/Menu.png")
+    menu = opening_screen.Menu(screen)
+    menu_state = True
     pygame.mixer.music.play(-1)
     clock = pygame.time.Clock()
     while True:
+
+        while menu_state:
+            clock.tick(60)
+
+            for event in pygame.event.get():
+
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_RIGHT:
+                        menu.Char_select(1)
+                    if event.key == pygame.K_LEFT:
+                        menu.Char_select(-1)
+                    if event.key == pygame.K_RETURN:
+                        print("Menu closed")
+                        menu_state = False
+
+            print("hi")
+
+            menu.draw()
+            menu.character_selected()
+            menu.draw_character()
+            pygame.display.update()
+
+
+
         clock.tick(60)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -87,5 +113,11 @@ def main():
 
         # don't forget the update, otherwise nothing will show up!
         pygame.display.update()
+
+
+
+
+
+
 
 main()
