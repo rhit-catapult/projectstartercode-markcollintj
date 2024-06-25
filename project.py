@@ -50,7 +50,7 @@ def main():
                         print("Menu closed")
                         menu_state = False
 
-            print("hi")
+
 
             menu.draw()
             menu.character_selected()
