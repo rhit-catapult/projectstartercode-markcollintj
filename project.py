@@ -18,6 +18,9 @@ import mark_module
 def main():
 
     pygame.init()
+    # unharmed_right = pygame.image.load("sprites/camper healthy right.png")
+    # unharmed_left = pygame.image.load("sprites/camper healthy left.png")
+    # unharmed_up = pygame.image.load("sprites/camper healthy up.png")
     pygame.mixer.music.load("spook4.mp3")
     grass = pygame.image.load("grass.png")
     pygame.display.set_caption("Cool Project")

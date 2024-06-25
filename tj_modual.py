@@ -19,10 +19,9 @@ class Cammperhealthy:
         self.screen = screen
         self.x = x
         self.y = y
-        self.imageunharmed = pygame.image.load("sprites/camper healthy left.png")
         self.imageunharmedright = pygame.image.load("sprites/camper healthy right.png")
         self.imageunharmedleft = pygame.image.load("sprites/camper healthy left.png")
-        self.imageunharmedup =pygame.image.load("sprites/camper healthy up.png")
+        self.imageunharmedup = pygame.image.load("sprites/camper healthy up.png")
         self.imageunharmeddown = pygame.image.load("sprites/camper healthy down.png")
         self.imageunharmedleftdown = pygame.image.load("sprites/camper healthy left down.png")
         self.imageunharmedleftup = pygame.image.load("sprites/camper healthy left up.png")
@@ -39,9 +38,7 @@ class Cammperhealthy:
     def draw(self):
         self.speedx = 3 * ((Hero_Module.Hero.x - self.x) / (abs(Hero_Module.Hero.x - self.x)))
         self.speedy = 3 * ((Hero_Module.Hero.y - self.y) / (abs(Hero_Module.Hero.y - self.y)))
-        if self.speedx == 0 and self.speedy == 0:
-            self.screen.blit(self.imageunharmed, (self.x, self.y))
-        elif self.speedx >= 0 and self.speedy == 0:
+        if self.speedx >= 0 and self.speedy == 0:
             self.screen.blit(self.imageunharmedright, (self.x, self.y))
         elif self.speedx <= 0 and self.speedy == 0:
             self.screen.blit(self.imageunharmedleft, (self.x, self.y))
@@ -61,10 +58,7 @@ class Cammperhealthy:
     def hitby(self, Projectile):
         self.speedx = 3 * ((Hero_Module.Hero.x - self.x) / (abs(Hero_Module.Hero.x - self.x)))
         self.speedy = 3 * ((Hero_Module.Hero.y - self.y) / (abs(Hero_Module.Hero.y - self.y)))
-        if self.speedx == 0 and self.speedy == 0:
-            self.hit_box = pygame.Rect(self.x, self.y, self.imageunharmed.get_width(),
-                                        self.imageunharmed.get_height())
-        elif self.speedx >= 0 and self.speedy == 0:
+        if self.speedx >= 0 and self.speedy == 0:
             self.hit_box = pygame.Rect(self.x, self.y, self.imageunharmedright.get_width(),
                                         self.imageunharmedright.get_height())
         elif self.speedx <= 0 and self.speedy == 0:
@@ -95,7 +89,6 @@ class Cammperhurt:
         self.screen = screen
         self.x = x
         self.y = y
-        self.imageharmed = pygame.image.load("sprites/camper unhealthy left.png")
         self.imageharmedright = pygame.image.load("sprites/camper unhealthy right.png")
         self.imageharmedleft = pygame.image.load("sprites/camper unhealthy left.png")
         self.imageharmedup = pygame.image.load("sprites/camper unhealthy up.png")
@@ -113,9 +106,7 @@ class Cammperhurt:
     def draw(self):
         self.speedx = 1.5 * ((Hero_Module.Hero.x - self.x)/(abs(Hero_Module.Hero.x - self.x)))
         self.speedy = 1.5 * ((Hero_Module.Hero.y - self.y)/(abs(Hero_Module.Hero.y - self.y)))
-        if self.speedx == 0 and self.speedy == 0:
-            self.screen.blit(self.imageharmed, (self.x, self.y))
-        elif self.speedx >= 0 and self.speedy == 0:
+        if self.speedx >= 0 and self.speedy == 0:
             self.screen.blit(self.imageharmedright, (self.x, self.y))
         elif self.speedx <= 0 and self.speedy == 0:
             self.screen.blit(self.imageharmedleft, (self.x, self.y))
@@ -135,10 +126,7 @@ class Cammperhurt:
     def hitby(self, Projectile):
         self.speedx = 3 * ((Hero_Module.Hero.x - self.x) / (abs(Hero_Module.Hero.x - self.x)))
         self.speedy = 3 * ((Hero_Module.Hero.y - self.y) / (abs(Hero_Module.Hero.y - self.y)))
-        if self.speedx == 0 and self.speedy == 0:
-            self.hit_box = pygame.Rect(self.x, self.y, self.imageharmed.get_width(),
-                                       self.imageharmed.get_height())
-        elif self.speedx >= 0 and self.speedy == 0:
+        if self.speedx >= 0 and self.speedy == 0:
             self.hit_box = pygame.Rect(self.x, self.y, self.imageharmedright.get_width(),
                                        self.imageharmedright.get_height())
         elif self.speedx <= 0 and self.speedy == 0:
