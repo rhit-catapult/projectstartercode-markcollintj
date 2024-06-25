@@ -19,15 +19,15 @@ class Cammperhealthy:
         self.screen = screen
         self.x = x
         self.y = y
-        self.imageunharmed = pygame.image.load("sprites/download-Photoroom.png")
-        self.imageunharmedright = pygame.image.load("sprites/download-Photoroom.png")
-        self.imageunharmedleft = pygame.image.load("sprites/download-Photoroom.png")
-        self.imageunharmedup =pygame.image.load("sprites/download-Photoroom.png")
-        self.imageunharmeddown = pygame.image.load("sprites/download-Photoroom.png")
-        self.imageunharmedleftdown = pygame.image.load("sprites/download-Photoroom.png")
-        self.imageunharmedleftup = pygame.image.load("sprites/download-Photoroom.png")
-        self.imageunharmedrightup = pygame.image.load("sprites/download-Photoroom.png")
-        self.imageunharmedrightdown = pygame.image.load("sprites/download-Photoroom.png")
+        self.imageunharmed = pygame.image.load("sprites/camper healthy left.png")
+        self.imageunharmedright = pygame.image.load("sprites/camper healthy right.png")
+        self.imageunharmedleft = pygame.image.load("sprites/camper healthy left.png")
+        self.imageunharmedup =pygame.image.load("sprites/camper healthy up.png")
+        self.imageunharmeddown = pygame.image.load("sprites/camper healthy down.png")
+        self.imageunharmedleftdown = pygame.image.load("sprites/camper healthy left down.png")
+        self.imageunharmedleftup = pygame.image.load("sprites/camper healthy left up.png")
+        self.imageunharmedrightup = pygame.image.load("sprites/camper healthy right up.png")
+        self.imageunharmedrightdown = pygame.image.load("sprites/camper healthy right down.png")
 
     def move(self):
         self.speedx = 3 * ((Hero_Module.Hero.x - self.x) / (abs(Hero_Module.Hero.x - self.x)))
@@ -95,15 +95,15 @@ class Cammperhurt:
         self.screen = screen
         self.x = x
         self.y = y
-        self.imageharmed = pygame.image.load("sprites/download-Photoroom.png")
-        self.imageharmedright = pygame.image.load("sprites/download-Photoroom.png")
-        self.imageharmedleft = pygame.image.load("sprites/download-Photoroom.png")
-        self.imageharmedup = pygame.image.load("sprites/download-Photoroom.png")
-        self.imageharmeddown = pygame.image.load("sprites/download-Photoroom.png")
-        self.imageharmedleftdown = pygame.image.load("sprites/download-Photoroom.png")
-        self.imageharmedleftup = pygame.image.load("sprites/download-Photoroom.png")
-        self.imageharmedrightup = pygame.image.load("sprites/download-Photoroom.png")
-        self.imageharmedrightdown = pygame.image.load("sprites/download-Photoroom.png")
+        self.imageharmed = pygame.image.load("sprites/camper unhealthy left.png")
+        self.imageharmedright = pygame.image.load("sprites/camper unhealthy right.png")
+        self.imageharmedleft = pygame.image.load("sprites/camper unhealthy left.png")
+        self.imageharmedup = pygame.image.load("sprites/camper unhealthy up.png")
+        self.imageharmeddown = pygame.image.load("sprites/camper unhealthy down.png")
+        self.imageharmedleftdown = pygame.image.load("sprites/camper unhealthy left down.png")
+        self.imageharmedleftup = pygame.image.load("sprites/camper unhealthy left up.png")
+        self.imageharmedrightup = pygame.image.load("sprites/camper unhealthy right up.png")
+        self.imageharmedrightdown = pygame.image.load("sprites/camper unhealthy right down.png")
 
 
     def move(self):
