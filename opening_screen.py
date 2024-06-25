@@ -43,25 +43,48 @@ Menu1 = pygame.image.load("sprites/Menu.png")
 menu = Menu(screen)
 
 font1 = pygame.font.SysFont("impact",40)
-
+menu_state = 0
 while True:
     clock.tick(60)
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             sys.exit()
-        if event.type == pygame.KEYDOWN:
-            pressed_keys = pygame.key.get_pressed()
-            if pressed_keys[pygame.K_RIGHT]:
-                menu.Char_select(1)
-            if pressed_keys[pygame.K_LEFT]:
-                menu.Char_select(-1)
+        # if event.type == pygame.KEYDOWN:
+        #     pressed_keys = pygame.key.get_pressed()
+        #     if pressed_keys[pygame.K_RIGHT]:
+        #         menu.Char_select(1)
+        #     if pressed_keys[pygame.K_LEFT]:
+        #         menu.Char_select(-1)
 
     pressed_keys = pygame.key.get_pressed()
     if pressed_keys[pygame.K_p]:
         sys.exit()
 
-    menu.draw()
-    menu.character_selected()
-    menu.draw_character()
+    # menu.draw()
+    # menu.character_selected()
+    # menu.draw_character()
+    #
+    # pygame.display.update()
 
-    pygame.display.update()
+    while True:
+        for event in pygame.event.get():
+            if event.type == pygame.KEYDOWN:
+                pressed_keys = pygame.key.get_pressed()
+                if pressed_keys[pygame.K_RIGHT]:
+                    menu.Char_select(1)
+                if pressed_keys[pygame.K_LEFT]:
+                    menu.Char_select(-1)
+
+        pressed_keys = pygame.key.get_pressed()
+        if pressed_keys[pygame.K_p]:
+            sys.exit()
+
+        menu.draw()
+        menu.character_selected()
+        menu.draw_character()
+
+        pygame.display.update()
+
+
+        if pressed_keys [pygame.K_RETURN]:
+            break
