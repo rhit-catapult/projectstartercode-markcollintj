@@ -33,6 +33,7 @@ def main():
     menu_state = True
     pygame.mixer.music.play(-1)
     clock = pygame.time.Clock()
+    bar = pygame.image.load("sprites/health_bar.png")
     while True:
 
         while menu_state:
@@ -73,7 +74,7 @@ def main():
         screen.fill((255,255,255))
         pressed_keys = pygame.key.get_pressed()
         screen.blit(grass2, (0,0))
-
+        screen.blit(bar, (0, 0))
 
         the_hero.draw()
 
@@ -110,7 +111,7 @@ def main():
                 moving_projectile.draw()
 
         the_hero.rotate()
-
+        screen.blit(bar, (0, 0))
         # don't forget the update, otherwise nothing will show up!
         pygame.display.update()
 
