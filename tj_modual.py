@@ -20,14 +20,14 @@ class Cammperhealthy:
         self.center_x = x
         self.center_y = y
         self.speed = 1
-        self.imageunharmedright = pygame.image.load("sprites/camper healthy right.png")
-        self.imageunharmedleft = pygame.image.load("sprites/camper healthy left.png")
-        self.imageunharmedup = pygame.image.load("sprites/camper healthy up.png")
-        self.imageunharmeddown = pygame.image.load("sprites/camper healthy down.png")
-        self.imageunharmedleftdown = pygame.image.load("sprites/camper healthy left down.png")
-        self.imageunharmedleftup = pygame.image.load("sprites/camper healthy left up.png")
-        self.imageunharmedrightup = pygame.image.load("sprites/camper healthy right up.png")
-        self.imageunharmedrightdown = pygame.image.load("sprites/camper healthy right down.png")
+        self.imageunharmedright = unharmedright
+        self.imageunharmedleft = unharmedleft
+        self.imageunharmedup = unharmedup
+        self.imageunharmeddown = unharmeddown
+        self.imageunharmedleftdown = unharmedleftdown
+        self.imageunharmedleftup = unharmedleftup
+        self.imageunharmedrightup = unharmedrightup
+        self.imageunharmedrightdown = unharmedrightdown
         self.hit_box = None
 
     def move(self, x, y):
