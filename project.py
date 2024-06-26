@@ -7,11 +7,8 @@ import Hero_Module
 import mark_module
 import opening_screen
 
-# need counsalur imagise (mabye as caricter salection) tj on free time
-# need player charicter
-# need projectile: Mark
+
 # need enemy
-# need level/location
 
 
 
@@ -78,7 +75,7 @@ def main():
         screen.fill((255,255,255))
         pressed_keys = pygame.key.get_pressed()
         screen.blit(grass2, (0,0))
-        pfp.draw_pfp(char_pfp)
+        pfp.draw_pfp(char_pfp % 8)
         screen.blit(bar, (0, 0))
 
         the_hero.draw()
