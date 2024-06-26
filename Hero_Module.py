@@ -37,7 +37,14 @@ class Hero:
         self.y += ya
         self.x += xa
 
-
+        if self.x < 0:
+            self.x = 0
+        if self.x > self.screen.get_width()-30:
+            self.x = self.screen.get_width()-30
+        if self.y <= 0:
+            self.y = 0
+        if self.y >= self.screen.get_height()-30:
+            self.y = self.screen.get_height()-30
 
     def draw(self):
 
@@ -105,7 +112,8 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit()
-
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                the_hero.shoot()
 
 
 
@@ -137,8 +145,7 @@ def main():
         if pressed_keys[pygame.K_d]:
             the_hero.move(5, 0)
 
-        if event.type == pygame.MOUSEBUTTONDOWN:
-            the_hero.shoot()
+
 
         for moving_projectile in the_hero.bullets:
             if moving_projectile.off_screen():
