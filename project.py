@@ -40,6 +40,27 @@ def main():
     hurt = []
     healthy = []
 
+    gasshole = [
+        "grasshole/aaron.mp3",
+        "grasshole/kali.mp3",
+        "grasshole/ruby.mp3",
+        "grasshole/ethan.mp3",
+        "grasshole/eli.mp3",
+        "grasshole/micheal.mp3",
+        "grasshole/hoyt.mp3",
+        "grasshole/reid.mp3",
+        "grasshole/brayden.mp3",
+        "grasshole/claire.mp3",
+        "grasshole/elly.mp3",
+        "grasshole/emmet.mp3",
+        "grasshole/fox.mp3",
+        "grasshole/sparky.mp3",
+        "grasshole/tyler.mp3",
+    ]
+
+
+    grasshole_sound = pygame.mixer.Sound(gasshole[char_pfp])
+
     harmedright = pygame.image.load("sprites/camper unhealthy right.png")
     harmedleft = pygame.image.load("sprites/camper unhealthy left.png")
     harmedup = pygame.image.load("sprites/camper unhealthy up.png")
@@ -180,6 +201,7 @@ def main():
             for bullet in the_hero.bullets:
                 if camperhealthy.hitby(bullet, the_hero.x,the_hero.y):
                     if camperhealthy not in camperstoremovehealthy:
+                        pygame.mixer.Sound.play(grasshole_sound)
                         camperstoremovehealthy.append(camperhealthy)
                         camperhurt = tj_modual.Cammperhurt(screen, camperhealthy.x, camperhealthy.y, harmedright,
                                                            harmedleft, harmedup, harmeddown, harmedleftdown,
