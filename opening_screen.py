@@ -18,17 +18,9 @@ class Menu:
             "sprites/cliped_HOYT.png",
             "sprites/Cliped_Reid.png"
         ]
-        self.pfp_img = [
-            "sprites/pfp_aaron.png",
-            "sprites/pfp_kali.png",
-            "sprites/pfp_ruby.png",
-            "sprites/pfp_ethan.png",
-            "sprites/pfp_eli.png",
-            "sprites/pfp_micheal.png",
-            "sprites/pfp_hoyt.png",
-            "sprites/pfp_reid.png"
-        ]
+
         self.char_png = pygame.image.load(self.images[self.displayed_character])
+
         self.Menu1 = pygame.image.load("sprites/Menu.png")
 
     def draw(self):
@@ -46,6 +38,21 @@ class Menu:
     def draw_character(self):
         self.screen.blit(self.char_png, (self.x + 200, self.y + 250))
 
+    def draw_pfp(self,x):
+        pfp_img = [
+            "sprites/pfp_aaron.png",
+            "sprites/pfp_kali.png",
+            "sprites/pfp_ruby.png",
+            "sprites/pfp_ethan.png",
+            "sprites/pfp_eli.png",
+            "sprites/pfp_micheal.png",
+            "sprites/pfp_hoyt.png",
+            "sprites/pfp_reid.png"
+        ]
+
+        pfp_png = pygame.image.load(pfp_img[x])
+
+        self.screen.blit(pfp_png, (0, 0))
 
 # pygame.init()
 # screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)

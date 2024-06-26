@@ -34,6 +34,8 @@ def main():
     pygame.mixer.music.play(-1)
     clock = pygame.time.Clock()
     bar = pygame.image.load("sprites/health_bar.png")
+    pfp = opening_screen.Menu(screen)
+    char_pfp = 0
     while True:
 
         while menu_state:
@@ -44,8 +46,10 @@ def main():
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_RIGHT:
                         menu.Char_select(1)
+                        char_pfp += 1
                     if event.key == pygame.K_LEFT:
                         menu.Char_select(-1)
+                        char_pfp -= 1
                     if event.key == pygame.K_RETURN:
                         print("Menu closed")
                         menu_state = False
@@ -74,6 +78,7 @@ def main():
         screen.fill((255,255,255))
         pressed_keys = pygame.key.get_pressed()
         screen.blit(grass2, (0,0))
+        pfp.draw_pfp(char_pfp)
         screen.blit(bar, (0, 0))
 
         the_hero.draw()
