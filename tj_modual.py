@@ -15,7 +15,7 @@ import math
 
 
 class Cammperhealthy:
-    def __init__(self, screen, x, y):
+    def __init__(self, screen, x, y, unharmedright, unharmedleft, unharmedup, unharmeddown, unharmedleftdown, unharmedleftup, unharmedrightup, unharmedrightdown):
         self.screen = screen
         self.x = x
         self.y = y
@@ -28,16 +28,28 @@ class Cammperhealthy:
         self.imageunharmedrightup = pygame.image.load("sprites/camper healthy right up.png")
         self.imageunharmedrightdown = pygame.image.load("sprites/camper healthy right down.png")
 
-    def move(self):
-        self.speedx = 3 * ((Hero_Module.Hero.x - self.x) / (abs(Hero_Module.Hero.x - self.x)))
-        self.speedy = 3 * ((Hero_Module.Hero.y - self.y) / (abs(Hero_Module.Hero.y - self.y)))
+    def move(self, x, y):
+        if not x - self.x:
+            self.speedx = 0
+        else:
+            self.speedx = 0.5 * ((x - self.x) / (abs(x - self.x)))
+        if not y - self.y:
+            self.speedy = 0
+        else:
+            self.speedy = 0.5 * ((y - self.y) / (abs(y - self.y)))
         self.x = self.x + self.speedx
         self.x = self.y + self.speedy
 
 
-    def draw(self):
-        self.speedx = 3 * ((Hero_Module.Hero.x - self.x) / (abs(Hero_Module.Hero.x - self.x)))
-        self.speedy = 3 * ((Hero_Module.Hero.y - self.y) / (abs(Hero_Module.Hero.y - self.y)))
+    def draw(self, x, y):
+        if not x - self.x:
+            self.speedx = 0
+        else:
+            self.speedx = 0.5 * ((x - self.x) / (abs(x - self.x)))
+        if not y - self.y:
+            self.speedy = 0
+        else:
+            self.speedy = 0.5 * ((y - self.y) / (abs(y - self.y)))
         if self.speedx >= 0 and self.speedy == 0:
             self.screen.blit(self.imageunharmedright, (self.x, self.y))
         elif self.speedx <= 0 and self.speedy == 0:
@@ -55,9 +67,15 @@ class Cammperhealthy:
         else:
             self.screen.blit(self.imageunharmedrightup, (self.x, self.y))
 
-    def hitby(self, Projectile):
-        self.speedx = 3 * ((Hero_Module.Hero.x - self.x) / (abs(Hero_Module.Hero.x - self.x)))
-        self.speedy = 3 * ((Hero_Module.Hero.y - self.y) / (abs(Hero_Module.Hero.y - self.y)))
+    def hitby(self, Projectile, x, y):
+        if not x - self.x:
+            self.speedx = 0
+        else:
+            self.speedx = 0.5 * ((x - self.x) / (abs(x - self.x)))
+        if not y - self.y:
+            self.speedy = 0
+        else:
+            self.speedy = 0.5 * ((y - self.y) / (abs(y - self.y)))
         if self.speedx >= 0 and self.speedy == 0:
             self.hit_box = pygame.Rect(self.x, self.y, self.imageunharmedright.get_width(),
                                         self.imageunharmedright.get_height())
@@ -71,41 +89,53 @@ class Cammperhealthy:
             self.hit_box = pygame.Rect(self.x, self.y, self.imageunharmedup.get_width(),
                             self.imageunharmedup.get_height())
         elif self.speedx >= 0 and self.speedy >= 0:
-            self.hit_box = pygame.Rect(self.x, self.y, self.imageunharmedleftdown.get_width(),
+            self.hit_box = pygame.Rect(self.x, self.y, self.imageunharmedleftdown.get_width() * 2,
                                         self.imageunharmedleftdown.get_height())
         elif self.speedx <= 0 and self.speedy >= 0:
-            self.hit_box = pygame.Rect(self.x, self.y, self.imageunharmedrightdown.get_width(),
+            self.hit_box = pygame.Rect(self.x, self.y, self.imageunharmedrightdown.get_width() * 2,
                             self.imageunharmedrightdown.get_height())
         elif self.speedx >= 0 and self.speedy <= 0:
-            self.hit_box = pygame.Rect(self.x, self.y, self.imageunharmedleftup.get_width(),
+            self.hit_box = pygame.Rect(self.x, self.y, self.imageunharmedleftup.get_width() * 2,
                                         self.imageunharmedleftup.get_height())
         else:
-             self.hit_box = pygame.Rect(self.x, self.y, self.imageunharmedrightup.get_width(),
+             self.hit_box = pygame.Rect(self.x, self.y, self.imageunharmedrightup.get_width() * 2,
                                         self.imageunharmedrightup.get_width())
         return self.hit_box.colliderect(Projectile.hit_box)
 
 class Cammperhurt:
-    def __init__(self, screen, x, y):
+    def __init__(self, screen, x, y, harmedright, harmedleft, harmedup, harmeddown, harmedleftdown, harmedleftup, harmedrightup, harmedrightdown):
         self.screen = screen
         self.x = x
         self.y = y
-        self.imageharmedright = pygame.image.load("sprites/camper unhealthy right.png")
-        self.imageharmedleft = pygame.image.load("sprites/camper unhealthy left.png")
-        self.imageharmedup = pygame.image.load("sprites/camper unhealthy up.png")
-        self.imageharmeddown = pygame.image.load("sprites/camper unhealthy down.png")
-        self.imageharmedleftdown = pygame.image.load("sprites/camper unhealthy left down.png")
-        self.imageharmedleftup = pygame.image.load("sprites/camper unhealthy left up.png")
-        self.imageharmedrightup = pygame.image.load("sprites/camper unhealthy right up.png")
-        self.imageharmedrightdown = pygame.image.load("sprites/camper unhealthy right down.png")
+        self.imageharmedright = harmedright
+        self.imageharmedleft = harmedleft
+        self.imageharmedup = harmedup
+        self.imageharmeddown = harmeddown
+        self.imageharmedleftdown = harmedleftdown
+        self.imageharmedleftup = harmedleftup
+        self.imageharmedrightup = harmedrightup
+        self.imageharmedrightdown = harmedrightdown
 
 
-    def move(self):
-        self.x = self.x + 1.5 * ((Hero_Module.Hero.x - self.x)/(abs(Hero_Module.Hero.x - self.x)))
-        self.y = self.y + 1.5 * ((Hero_Module.Hero.y - self.y)/(abs(Hero_Module.Hero.y - self.y)))
+    def move(self, x, y):
+        if not x - self.x:
+            self.speedx = 0
+        else:
+            self.x = self.x + 0.25 * ((x - self.x)/(abs(x - self.x)))
+        if not y - self.y:
+            self.speedy = 0
+        else:
+            self.y = self.y + 0.25 * ((y - self.y)/(abs(y - self.y)))
 
-    def draw(self):
-        self.speedx = 1.5 * ((Hero_Module.Hero.x - self.x)/(abs(Hero_Module.Hero.x - self.x)))
-        self.speedy = 1.5 * ((Hero_Module.Hero.y - self.y)/(abs(Hero_Module.Hero.y - self.y)))
+    def draw(self, x, y):
+        if not x - self.x:
+            self.speedx = 0
+        else:
+            self.speedx = 0.25 * ((x - self.x)/(abs(x - self.x)))
+        if not y - self.y:
+            self.speedy = 0
+        else:
+            self.speedy = 0.25 * ((y - self.y)/(abs(y - self.y)))
         if self.speedx >= 0 and self.speedy == 0:
             self.screen.blit(self.imageharmedright, (self.x, self.y))
         elif self.speedx <= 0 and self.speedy == 0:
@@ -123,9 +153,15 @@ class Cammperhurt:
         elif self.speedx <= 0 and self.speedy <= 0:
             self.screen.blit(self.imageharmedrightup, (self.x, self.y))
 
-    def hitby(self, Projectile):
-        self.speedx = 3 * ((Hero_Module.Hero.x - self.x) / (abs(Hero_Module.Hero.x - self.x)))
-        self.speedy = 3 * ((Hero_Module.Hero.y - self.y) / (abs(Hero_Module.Hero.y - self.y)))
+    def hitby(self, Projectile, x, y):
+        if not x - self.x:
+            self.speedx = 0
+        else:
+            self.speedx = 0.25 * ((x - self.x) / (abs(x - self.x)))
+        if not y - self.y:
+            self.speedy = 0
+        else:
+            self.speedy = 0.25 * ((y - self.y) / (abs(y - self.y)))
         if self.speedx >= 0 and self.speedy == 0:
             self.hit_box = pygame.Rect(self.x, self.y, self.imageharmedright.get_width(),
                                        self.imageharmedright.get_height())
@@ -139,16 +175,16 @@ class Cammperhurt:
             self.hit_box = pygame.Rect(self.x, self.y, self.imageharmedup.get_width(),
                                        self.imageharmedup.get_height())
         elif self.speedx >= 0 and self.speedy >= 0:
-            self.hit_box = pygame.Rect(self.x, self.y, self.imageharmedleftdown.get_width(),
+            self.hit_box = pygame.Rect(self.x, self.y, self.imageharmedleftdown.get_width() * 2,
                                                self.imageharmedleftdown.get_height())
         elif self.speedx <= 0 and self.speedy >= 0:
-             self.hit_box = pygame.Rect(self.x, self.y, self.imageharmedrightdown.get_width(),
+             self.hit_box = pygame.Rect(self.x, self.y, self.imageharmedrightdown.get_width() * 2,
                                                self.imageharmedrightdown.get_height())
         elif self.speedx >= 0 and self.speedy <= 0:
-            self.hit_box = pygame.Rect(self.x, self.y, self.imageharmedleftup.get_width(),
+            self.hit_box = pygame.Rect(self.x, self.y, self.imageharmedleftup.get_width() * 2,
                                                self.imageharmedleftup.get_height())
         else:
-            self.hit_box = pygame.Rect(self.x, self.y, self.imageharmedrightup.get_width(),
+            self.hit_box = pygame.Rect(self.x, self.y, self.imageharmedrightup.get_width() * 2,
                                        self.imageharmedrightup.get_width())
         return self.hit_box.colliderect(Projectile.hit_box)
 
