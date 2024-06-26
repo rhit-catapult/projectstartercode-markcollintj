@@ -68,12 +68,37 @@ class Menu:
 
         self.screen.blit(pfp_png, (0, 0))
 
+    # def play_sound(self,x):
+    #
+    #     gasshole_sound = [
+    #         "grasshole/aaron.mp3",
+    #         "grasshole/kali.mp3",
+    #         "grasshole/ruby.mp3",
+    #         "grasshole/ethan.mp3",
+    #         "grasshole/eli.mp3",
+    #         "grasshole/michal.mp3",
+    #         "grasshole/hoit.mp3",
+    #         "grasshole/reed.mp3",
+    #         "grasshole/braydon.mp3",
+    #         "grasshole/clare.mp3",
+    #         "grasshole/elly.mp3",
+    #         "grasshole/emmet.mp3",
+    #         "grasshole/fox.mp3",
+    #         "grasshole/sparky.mp3",
+    #         "grasshole/tyler.mp3",
+    #     ]
+    #
+    #     #grasshole_sound = pygame.mixer.Sound(gasshole_sound[self.displayed_character % 15])
+    #
+    #     grasshole_sound = pygame.mixer.Sound(gasshole_sound[x % 15])
+    #
+    #     pygame.mixer.Sound(grasshole_sound)
 # pygame.init()
 # screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
 # clock = pygame.time.Clock()
 # Menu1 = pygame.image.load("sprites/Menu.png")
 # menu = Menu(screen)
-#
+#                           pygame.mixer.Sound(gasshole[char_pfp % 15])
 # font1 = pygame.font.SysFont("impact",40)
 # menu_state = 0
 # while True:

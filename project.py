@@ -29,6 +29,7 @@ def main():
     menu = opening_screen.Menu(screen)
     menu_state = True
     pygame.mixer.music.play(-1)
+    pygame.mixer.music.set_volume(.5)
     clock = pygame.time.Clock()
     bar = pygame.image.load("sprites/health_bar.png")
     pfp = opening_screen.Menu(screen)
@@ -39,6 +40,9 @@ def main():
     clock3 = 0
     hurt = []
     healthy = []
+    score = 0
+    font1 = pygame.font.SysFont("impact", 20)
+    #caption1 = font1.render(score , True, pygame.Color("White"))
 
     gasshole = [
         "grasshole/aaron.mp3",
@@ -46,11 +50,11 @@ def main():
         "grasshole/ruby.mp3",
         "grasshole/ethan.mp3",
         "grasshole/eli.mp3",
-        "grasshole/micheal.mp3",
-        "grasshole/hoyt.mp3",
-        "grasshole/reid.mp3",
-        "grasshole/brayden.mp3",
-        "grasshole/claire.mp3",
+        "grasshole/michal.mp3",
+        "grasshole/hoit.mp3",
+        "grasshole/reed.mp3",
+        "grasshole/braydon.mp3",
+        "grasshole/clare.mp3",
         "grasshole/elly.mp3",
         "grasshole/emmet.mp3",
         "grasshole/fox.mp3",
@@ -59,7 +63,7 @@ def main():
     ]
 
 
-    grasshole_sound = pygame.mixer.Sound(gasshole[char_pfp])
+    #grasshole_sound = pygame.mixer.Sound(gasshole[char_pfp % 15])
 
     harmedright = pygame.image.load("sprites/camper unhealthy right.png")
     harmedleft = pygame.image.load("sprites/camper unhealthy left.png")
@@ -114,15 +118,14 @@ def main():
             if pressed_keys[pygame.K_p]:
                 sys.exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
-                if time.time() - last_fire_time > 0.4:
+                if time.time() - last_fire_time > 0.2:
                     new_fire_time = the_hero.shoot()
                     last_fire_time = new_fire_time
 
         screen.fill((255,255,255))
         pressed_keys = pygame.key.get_pressed()
         screen.blit(grass2, (0,0))
-        pfp.draw_pfp(char_pfp % 15)
-        screen.blit(bar, (0, 0))
+
 
         the_hero.draw()
 
@@ -143,8 +146,9 @@ def main():
             the_hero.move(-5, 0)
         if pressed_keys[pygame.K_d]:
             the_hero.move(5, 0)
+        caption1 = font1.render(f"{score}", True, pygame.Color("White"))
 
-
+        grasshole_sound = pygame.mixer.Sound(gasshole[char_pfp % 15])
         if time.time() - clock3 > 3:
             if not math.floor(time.time() - clock2) % 5:
                 spawns = math.floor(time.time() - clock2) / 5
@@ -190,6 +194,9 @@ def main():
             for bullet in the_hero.bullets:
                 if Camperhurt.hitby(bullet, the_hero.x, the_hero.y):
                     if Camperhurt not in camperstoremovehurt:
+                        pygame.mixer.Sound.play(grasshole_sound)
+                        score += 100
+
                         camperstoremovehurt.append(Camperhurt)
                         the_hero.bullets.remove(bullet)
             Camperhurt.move(the_hero.x, the_hero.y)
@@ -201,7 +208,7 @@ def main():
             for bullet in the_hero.bullets:
                 if camperhealthy.hitby(bullet, the_hero.x,the_hero.y):
                     if camperhealthy not in camperstoremovehealthy:
-                        pygame.mixer.Sound.play(grasshole_sound)
+                        #pygame.mixer.Sound.play(grasshole_sound)
                         camperstoremovehealthy.append(camperhealthy)
                         camperhurt = tj_modual.Cammperhurt(screen, camperhealthy.x, camperhealthy.y, harmedright,
                                                            harmedleft, harmedup, harmeddown, harmedleftdown,
@@ -213,8 +220,7 @@ def main():
         for camperhealthy in camperstoremovehealthy:
             healthy.remove(camperhealthy)
 
-
-
+        #pfp.play_sound(char_pfp)
 
 
 
@@ -231,7 +237,9 @@ def main():
             else:
                 moving_projectile.move()
                 moving_projectile.draw()
-
+        pfp.draw_pfp(char_pfp % 15)
+        #screen.blit(bar, (0, 0))
+        screen.blit(caption1, (140,30))
         the_hero.rotate()
         screen.blit(bar, (0, 0))
         # don't forget the update, otherwise nothing will show up!
