@@ -63,8 +63,6 @@ def main():
                 if time.time() - last_fire_time > 0.4:
                     new_fire_time = the_hero.shoot()
                     last_fire_time = new_fire_time
-        new_bullet = mark_module.Projectile(screen, (0, 5000000000), 0, 50000000)
-        the_hero.bullets.append(new_bullet)
         pressed_keys = pygame.key.get_pressed()
         if pressed_keys[pygame.K_w]:
             the_hero.y -= 5
@@ -79,40 +77,40 @@ def main():
         if time.time() - clock3 > 3:
             if not math.floor(time.time() - clock2) % 5:
                 spawns = math.floor(time.time() - clock2) / 5
-                spawnernumber = random.randint(0, spawns)
+                spawnernumber = int(spawns)
                 waveside = random.randint(1, 4)
                 if waveside == 1:
-                    for i in range(0, math.floor(spawnernumber / 10)):
+                    for i in range(0, math.floor(spawnernumber / 2)):
                         camperhealthy = tj_modual.Cammperhealthy(screen, random.randint(0, width), 0, unharmedright, unharmedleft, unharmedup, unharmeddown, unharmedleftdown, unharmedleftup, unharmedrightup, unharmedrightdown)
                         healthy.append(camperhealthy)
-                        spawnernumber -= 10
-                    for i in range(0, math.floor(spawnernumber / 5)):
+                        spawnernumber -= 2
+                    for i in range(0, spawnernumber):
                         camperhurt = tj_modual.Cammperhurt(screen, random.randint(0, width), 0, harmedright, harmedleft,
                                                            harmedup, harmeddown, harmedleftdown, harmedleftup,
                                                            harmedrightup, harmedrightdown)
                         hurt.append(camperhurt)
                 elif waveside == 2:
-                    for i in range(0, math.floor(spawnernumber / 10)):
+                    for i in range(0, math.floor(spawnernumber / 2)):
                         camperhealthy = tj_modual.Cammperhealthy(screen, random.randint(0, width), height, unharmedright, unharmedleft, unharmedup, unharmeddown, unharmedleftdown, unharmedleftup, unharmedrightup, unharmedrightdown)
                         healthy.append(camperhealthy)
-                        spawnernumber -= 10
-                    for i in range(0, math.floor(spawnernumber / 5)):
+                        spawnernumber -= 2
+                    for i in range(0, spawnernumber):
                         camperhurt = tj_modual.Cammperhurt(screen, random.randint(0, width), height, harmedright, harmedleft, harmedup, harmeddown, harmedleftdown, harmedleftup, harmedrightup, harmedrightdown)
                         hurt.append(camperhurt)
                 elif waveside == 3:
-                    for i in range(0, math.floor(spawnernumber / 10)):
+                    for i in range(0, math.floor(spawnernumber / 2)):
                         camperhealthy = tj_modual.Cammperhealthy(screen, 0, random.randint(0, height), unharmedright, unharmedleft, unharmedup, unharmeddown, unharmedleftdown, unharmedleftup, unharmedrightup, unharmedrightdown)
                         healthy.append(camperhealthy)
-                        spawnernumber -= 10
-                    for i in range(0, math.floor(spawnernumber / 5)):
+                        spawnernumber -= 2
+                    for i in range(0, spawnernumber):
                         camperhurt = tj_modual.Cammperhurt(screen, 0, random.randint(0, height), harmedright, harmedleft, harmedup, harmeddown, harmedleftdown, harmedleftup, harmedrightup, harmedrightdown)
                         hurt.append(camperhurt)
                 else:
-                    for i in range(0, math.floor(spawnernumber / 10)):
+                    for i in range(0, math.floor(spawnernumber / 2)):
                         camperhealthy = tj_modual.Cammperhealthy(screen, width, random.randint(0, height), unharmedright, unharmedleft, unharmedup, unharmeddown, unharmedleftdown, unharmedleftup, unharmedrightup, unharmedrightdown)
                         healthy.append(camperhealthy)
-                        spawnernumber -= 10
-                    for i in range(0, math.floor(spawnernumber / 5)):
+                        spawnernumber -= 2
+                    for i in range(0, spawnernumber):
                         camperhurt = tj_modual.Cammperhurt(screen, width, random.randint(0, height), harmedright, harmedleft, harmedup, harmeddown, harmedleftdown, harmedleftup, harmedrightup, harmedrightdown)
                         hurt.append(camperhurt)
                 clock3 = time.time()
@@ -123,9 +121,8 @@ def main():
                     if Camperhurt not in camperstoremovehurt:
                         camperstoremovehurt.append(Camperhurt)
                         the_hero.bullets.remove(bullet)
-                else:
-                    Camperhurt.move(the_hero.x, the_hero.y)
-                    Camperhurt.draw(the_hero.x, the_hero.y)
+            Camperhurt.move(the_hero.x, the_hero.y)
+            Camperhurt.draw(the_hero.x, the_hero.y)
         for Camperhurt in camperstoremovehurt:
             hurt.remove(Camperhurt)
         camperstoremovehealthy = []
@@ -139,9 +136,8 @@ def main():
                                                            harmedleftup, harmedrightup, harmedrightdown)
                         hurt.append(camperhurt)
                         the_hero.bullets.remove(bullet)
-                else:
-                    camperhealthy.move(the_hero.x, the_hero.y)
-                    camperhealthy.draw(the_hero.x, the_hero.y)
+            camperhealthy.move(the_hero.x, the_hero.y)
+            camperhealthy.draw(the_hero.x, the_hero.y)
         for camperhealthy in camperstoremovehealthy:
             healthy.remove(camperhealthy)
 
