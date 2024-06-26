@@ -18,6 +18,16 @@ class Menu:
             "sprites/cliped_HOYT.png",
             "sprites/Cliped_Reid.png"
         ]
+        self.pfp_img = [
+            "sprites/pfp_aaron.png",
+            "sprites/pfp_kali.png",
+            "sprites/pfp_ruby.png",
+            "sprites/pfp_ethan.png",
+            "sprites/pfp_eli.png",
+            "sprites/pfp_micheal.png",
+            "sprites/pfp_hoyt.png",
+            "sprites/pfp_reid.png"
+        ]
         self.char_png = pygame.image.load(self.images[self.displayed_character])
         self.Menu1 = pygame.image.load("sprites/Menu.png")
 
