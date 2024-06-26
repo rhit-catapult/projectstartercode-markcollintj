@@ -11,7 +11,7 @@ class Projectile:
     def __init__(self, screen, target, x, y):
         """target is cursor position at the time mouse was clicked"""
         self.screen = screen
-        self.radius = 5
+        self.radius = 10
         self.color = ("Pink")
         self.speed = 5
         #self.x = self.screen.get_width() / 2
