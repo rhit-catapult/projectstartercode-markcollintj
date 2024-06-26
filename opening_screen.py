@@ -45,7 +45,7 @@ class Menu:
     def draw_character(self):
         self.screen.blit(self.char_png, (self.x + 200, self.y + 250))
 
-    def draw_pfp(self,x):
+    def draw_pfp(self, x):
         pfp_img = [
             "sprites/pfp_aaron.png",
             "sprites/pfp_kali.png",
@@ -56,7 +56,7 @@ class Menu:
             "sprites/pfp_hoyt.png",
             "sprites/pfp_reid.png",
             "sprites/pfp_brayden.png",
-            "sprites/pfp_claire.png",
+            "sprites/png_claire.png",
             "sprites/pfp_elly.png",
             "sprites/pfp_emmet.png",
             "sprites/pfp_fox.png",
