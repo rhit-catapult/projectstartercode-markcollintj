@@ -39,6 +39,30 @@ class Cammperhealthy:
             self.speedy = self.speed * ((y - self.center_y) / (abs(y - self.center_y)))
         else:
             self.speedy = 0
+        if self.speedx <= 0 and self.speedy == 0:
+            self.x = self.center_x - self.imageunharmedright.get_width() / 2
+            self.y = self.center_y - self.imageunharmedright.get_height() / 2
+        elif self.speedx >= 0 and self.speedy == 0:
+            self.x = self.center_x - self.imageunharmedleft.get_width() / 2
+            self.y = self.center_y - self.imageunharmedleft.get_width() / 2
+        elif self.speedx == 0 and self.speedy >= 0:
+            self.x = self.center_x - self.imageunharmeddown.get_width() / 2
+            self.y = self.center_y - self.imageunharmeddown.get_height() / 2
+        elif self.speedx == 0 and self.speedy <= 0:
+            self.x = self.center_x - self.imageunharmedup.get_width() / 2
+            self.y = self.center_y - self.imageunharmedup.get_height() / 2
+        elif self.speedx <= 0 and self.speedy >= 0:
+            self.x = self.center_x - self.imageunharmedleftdown.get_width() / 2
+            self.y = self.center_y - self.imageunharmedleftdown.get_height() / 2
+        elif self.speedx >= 0 and self.speedy >= 0:
+            self.x = self.center_x - self.imageunharmedrightdown.get_width() / 2
+            self.y = self.center_y - self.imageunharmedrightdown.get_height() / 2
+        elif self.speedx <= 0 and self.speedy <= 0:
+            self.x = self.center_x - self.imageunharmedleftup.get_width() / 2
+            self.y = self.center_y - self.imageunharmedleftup.get_height() / 2
+        else:
+            self.x = self.center_x - self.imageunharmedrightup.get_width() / 2
+            self.y = self.center_y - self.imageunharmedrightup.get_height() / 2
         self.x += self.speedx
         self.center_x += self.speedx
         self.y += self.speedy
