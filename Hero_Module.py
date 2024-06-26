@@ -69,9 +69,13 @@ class Hero:
         last_fire_time = time.time()
         return last_fire_time
 
-    #def hit_by(self, power_up):
+    def hit_by(self, power_up):
+        hero_hit_box = pygame.Rect(self.x, self.y, self.image.get_width(), self.image.get_height())
 
-        # hero_hit_box = pygame.Rect(self.x, self.y, self.image.get_width(), self.image.get_height())
+        return hero_hit_box.colliderect(power_up.hit_box)
+         #return hero_hit_box.collidepoint(power_up.x, power_up.y)
+
+    # hero_hit_box = pygame.Rect(self.x, self.y, self.image.get_width(), self.image.get_height())
         #
         #
         # if hero_hit_box.colliderect(power_up.hit_box):

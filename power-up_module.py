@@ -21,9 +21,10 @@ class Power_up:
     def find_place(self):
         self.x = random.randint(100, self.screen.get_width() - 100)
         self.y = random.randint(100, self.screen.get_height() - 100)
+    def hit_move(self):
+        self.hit_box = pygame.Rect(self.x, self.y, self.image.get_width(), self.image.get_height())
 
-
-     # def colleccted(self, hero):
+    # def colleccted(self, hero):
      #
      #     if self.hit_box.colliderect(hero.hit_box):
      #         hero.remove(self)
@@ -31,7 +32,7 @@ class Power_up:
 
 
 
-
+clock3 = time.time()
 
 
 
@@ -45,9 +46,10 @@ def main():
     screen = pygame.display.set_mode((640, 480))
     pressed_keys = pygame.key.get_pressed()
     clock = pygame.time.Clock()
-
+    clock2 = time.time()
     the_hero = Hero_Module.Hero(screen, random.randint(100,screen.get_width()-100), random.randint(100,screen.get_height()-100))
     power_up = Power_up(screen)
+    n = 0
     while True:
         clock.tick(60)
         for event in pygame.event.get():
@@ -70,6 +72,8 @@ def main():
 
 
         the_hero.draw()
+
+        print(clock2)
 
 
         if pressed_keys[pygame.K_w]:
@@ -94,10 +98,19 @@ def main():
                 moving_projectile.move()
                 moving_projectile.draw()
 
+
+        if the_hero.hit_by(power_up):
+            power_up.find_place()
+
         the_hero.rotate()
         power_up.draw()
+        power_up.hit_move()
 
-        # power_up.colleccted(the_hero)
+
+        power_up.draw()
+        power_up.hit_move()
+
+
 
         pygame.display.update()
 if __name__ == "__main__":
