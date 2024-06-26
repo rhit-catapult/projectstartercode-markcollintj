@@ -50,19 +50,19 @@ class Cammperhealthy:
             self.speedy = 0
         else:
             self.speedy = 0.5 * ((y - self.y) / (abs(y - self.y)))
-        if self.speedx >= 0 and self.speedy == 0:
+        if self.speedx <= 0 and self.speedy == 0:
             self.screen.blit(self.imageunharmedright, (self.x, self.y))
-        elif self.speedx <= 0 and self.speedy == 0:
+        elif self.speedx >= 0 and self.speedy == 0:
             self.screen.blit(self.imageunharmedleft, (self.x, self.y))
         elif self.speedx == 0 and self.speedy >= 0:
             self.screen.blit(self.imageunharmeddown, (self.x, self.y))
         elif self.speedx == 0 and self.speedy <= 0:
             self.screen.blit(self.imageunharmedup, (self.x, self.y))
-        elif self.speedx >= 0 and self.speedy >= 0:
-            self.screen.blit(self.imageunharmedleftdown, (self.x, self.y))
         elif self.speedx <= 0 and self.speedy >= 0:
+            self.screen.blit(self.imageunharmedleftdown, (self.x, self.y))
+        elif self.speedx >= 0 and self.speedy >= 0:
             self.screen.blit(self.imageunharmedrightdown, (self.x, self.y))
-        elif self.speedx >= 0 and self.speedy <= 0:
+        elif self.speedx <= 0 and self.speedy <= 0:
             self.screen.blit(self.imageunharmedleftup, (self.x, self.y))
         else:
             self.screen.blit(self.imageunharmedrightup, (self.x, self.y))
@@ -140,19 +140,19 @@ class Cammperhurt:
             self.speedy = 0.25 * ((y - self.y)/(abs(y - self.y)))
         if self.speedx >= 0 and self.speedy == 0:
             self.screen.blit(self.imageharmedright, (self.x, self.y))
-        elif self.speedx <= 0 and self.speedy == 0:
+        elif self.speedx >= 0 and self.speedy == 0:
             self.screen.blit(self.imageharmedleft, (self.x, self.y))
         elif self.speedx == 0 and self.speedy >= 0:
             self.screen.blit(self.imageharmeddown, (self.x, self.y))
         elif self.speedx == 0 and self.speedy <= 0:
             self.screen.blit(self.imageharmedup, (self.x, self.y))
-        elif self.speedx >= 0 and self.speedy >= 0:
-            self.screen.blit(self.imageharmedleftdown, (self.x, self.y))
         elif self.speedx <= 0 and self.speedy >= 0:
+            self.screen.blit(self.imageharmedleftdown, (self.x, self.y))
+        elif self.speedx >= 0 and self.speedy >= 0:
             self.screen.blit(self.imageharmedrightdown, (self.x, self.y))
-        elif self.speedx >= 0 and self.speedy <= 0:
-            self.screen.blit(self.imageharmedleftup, (self.x, self.y))
         elif self.speedx <= 0 and self.speedy <= 0:
+            self.screen.blit(self.imageharmedleftup, (self.x, self.y))
+        elif self.speedx >= 0 and self.speedy <= 0:
             self.screen.blit(self.imageharmedrightup, (self.x, self.y))
 
     def hitby(self, Projectile, x, y):
