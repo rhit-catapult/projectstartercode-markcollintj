@@ -210,7 +210,7 @@ def main():
                     if camperhealthy not in camperstoremovehealthy:
                         #pygame.mixer.Sound.play(grasshole_sound)
                         camperstoremovehealthy.append(camperhealthy)
-                        camperhurt = tj_modual.Cammperhurt(screen, camperhealthy.x, camperhealthy.y, harmedright,
+                        camperhurt = tj_modual.Cammperhurt(screen, camperhealthy.center_x, camperhealthy.center_y, harmedright,
                                                            harmedleft, harmedup, harmeddown, harmedleftdown,
                                                            harmedleftup, harmedrightup, harmedrightdown)
                         hurt.append(camperhurt)
