@@ -94,8 +94,8 @@ class Cammperhealthy:
         else:
             self.screen.blit(self.imageunharmedrightup, (self.x, self.y))
 
-        if self.hit_box is not None:
-            pygame.draw.rect(self.screen, rect=self.hit_box, color="black")
+        # if self.hit_box is not None:
+        #     pygame.draw.rect(self.screen, rect=self.hit_box, color="black")
 
     def hitby(self, Projectile, x, y):
         if not x - self.center_x:
@@ -205,8 +205,8 @@ class Cammperhurt:
         elif self.speedx >= 0 and self.speedy <= 0:
             self.screen.blit(self.imageharmedrightup, (self.x, self.y))
 
-        if self.hit_box is not None:
-            pygame.draw.rect(self.screen, rect=self.hit_box, color="black")
+        # if self.hit_box is not None:
+        #     pygame.draw.rect(self.screen, rect=self.hit_box, color="black")
 
     def hitby(self, Projectile, x, y):
         if not x - self.x:

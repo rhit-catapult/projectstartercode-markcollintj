@@ -13,7 +13,7 @@ class Projectile:
         self.screen = screen
         self.radius = 10
         self.color = ("Pink")
-        self.speed = 5
+        self.speed = 15
         #self.x = self.screen.get_width() / 2
         #self.y = self.screen.get_height() / 2
         self.target = target
