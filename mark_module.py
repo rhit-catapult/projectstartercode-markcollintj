@@ -26,12 +26,14 @@ class Projectile:
         self.small_delta_y = math.sin(self.q) * self.speed
         self.hit_box = pygame.Rect(self.x - self.radius, self.y - self.radius, self.radius * 2, self.radius * 2)
 
+
     def draw(self):
         pygame.draw.circle(self.screen, self.color, (self.x, self.y), self.radius)
 
     def move(self):
         self.x += self.small_delta_x
         self.y += self.small_delta_y
+        self.hit_box = pygame.Rect(self.x - self.radius, self.y - self.radius, self.radius * 2, self.radius * 2)
 
     def off_screen(self):
         return self.x - self.radius > self.screen.get_width() \

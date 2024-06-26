@@ -67,6 +67,9 @@ class Cammperhealthy:
         else:
             self.screen.blit(self.imageunharmedrightup, (self.x, self.y))
 
+        if self.hit_box is not None:
+            pygame.draw.rect(self.screen, rect=self.hit_box, color="black")
+
     def hitby(self, Projectile, x, y):
         if not x - self.x:
             self.speedx = 0
@@ -126,7 +129,6 @@ class Cammperhurt:
             self.speedy = 0
         else:
             self.y = self.y + 0.25 * ((y - self.y)/(abs(y - self.y)))
-
     def draw(self, x, y):
         if not x - self.x:
             self.speedx = 0

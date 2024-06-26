@@ -116,25 +116,35 @@ def main():
                         camperhurt = tj_modual.Cammperhurt(screen, width, random.randint(0, height), harmedright, harmedleft, harmedup, harmeddown, harmedleftdown, harmedleftup, harmedrightup, harmedrightdown)
                         hurt.append(camperhurt)
                 clock3 = time.time()
+        camperstoremovehurt = []
         for Camperhurt in hurt:
             for bullet in the_hero.bullets:
                 if Camperhurt.hitby(bullet, the_hero.x, the_hero.y):
-                    hurt.remove(Camperhurt)
-                    the_hero.bullets.remove(bullet)
+                    if Camperhurt not in camperstoremovehurt:
+                        camperstoremovehurt.append(Camperhurt)
+                        the_hero.bullets.remove(bullet)
                 else:
                     Camperhurt.move(the_hero.x, the_hero.y)
                     Camperhurt.draw(the_hero.x, the_hero.y)
-
+        for Camperhurt in camperstoremovehurt:
+            hurt.remove(Camperhurt)
+        camperstoremovehealthy = []
         for camperhealthy in healthy:
             for bullet in the_hero.bullets:
                 if camperhealthy.hitby(bullet, the_hero.x,the_hero.y):
-                    camperhurt = tj_modual.Cammperhurt(screen, camperhealthy.x, camperhealthy.y, harmedright, harmedleft, harmedup, harmeddown, harmedleftdown, harmedleftup, harmedrightup, harmedrightdown)
-                    hurt.append(camperhurt)
-                    healthy.remove(camperhealthy)
-                    the_hero.bullets.remove(bullet)
+                    if camperhealthy not in camperstoremovehealthy:
+                        camperstoremovehealthy.append(camperhealthy)
+                        camperhurt = tj_modual.Cammperhurt(screen, camperhealthy.x, camperhealthy.y, harmedright,
+                                                           harmedleft, harmedup, harmeddown, harmedleftdown,
+                                                           harmedleftup, harmedrightup, harmedrightdown)
+                        hurt.append(camperhurt)
+                        the_hero.bullets.remove(bullet)
                 else:
                     camperhealthy.move(the_hero.x, the_hero.y)
                     camperhealthy.draw(the_hero.x, the_hero.y)
+        for camperhealthy in camperstoremovehealthy:
+            healthy.remove(camperhealthy)
+
 
         for moving_projectile in the_hero.bullets:
             if moving_projectile.off_screen():
