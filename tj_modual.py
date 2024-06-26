@@ -74,6 +74,14 @@ class Cammperhealthy:
             pygame.draw.rect(self.screen, rect=self.hit_box, color="black")
 
     def hitby(self, Projectile, x, y):
+        if not x - self.center_x:
+            self.speedx = 0
+        else:
+            self.speedx = self.speed * ((x - self.center_x) / (abs(x - self.center_x)))
+        if not y - self.center_y:
+            self.speedy = 0
+        else:
+            self.speedy = self.speed * ((y - self.center_y) / (abs(y - self.center_y)))
         if self.speedx <= 0 and self.speedy == 0:
             self.x = self.center_x - self.imageunharmedright.get_width() / 2
             self.y = self.center_y - self.imageunharmedright.get_height() / 2
@@ -98,14 +106,6 @@ class Cammperhealthy:
         else:
             self.x = self.center_x - self.imageunharmedrightup.get_width() / 2
             self.y = self.center_y - self.imageunharmedrightup.get_height() / 2
-        if not x - self.x:
-            self.speedx = 0
-        else:
-            self.speedx = self.speed * ((x - self.x) / (abs(x - self.x)))
-        if not y - self.y:
-            self.speedy = 0
-        else:
-            self.speedy = self.speed * ((y - self.y) / (abs(y - self.y)))
         if self.speedx >= 0 and self.speedy == 0:
             self.hit_box = pygame.Rect(self.x, self.y, self.imageunharmedright.get_width(),
                                         self.imageunharmedright.get_height())
