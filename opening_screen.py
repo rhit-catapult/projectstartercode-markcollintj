@@ -6,7 +6,7 @@ class Menu:
         self.screen = screen
         self.x = screen.get_width() // 2 - 250
         self.y = screen.get_height() // 2 - 250
-        self.councelor = ["Aaron", "Kali", "Ruby", "Ethan", "Eli", "Michael", "Hoyt", "Reid"]
+        self.councelor = ["Aaron", "Kali", "Ruby", "Ethan", "Eli", "Michael", "Hoyt", "Reid","Brayden","Claire","Elly","Emmett","Fox","Sparky","Tyler"]
         self.displayed_character = 0
         self.images = [
             "sprites/Cliped_aaron.png",
@@ -16,7 +16,14 @@ class Menu:
             "sprites/Cliped_Eli.png",
             "sprites/Micheal_cliped.png",
             "sprites/cliped_HOYT.png",
-            "sprites/Cliped_Reid.png"
+            "sprites/Cliped_Reid.png",
+            "sprites/clipped_brayden.png",
+            "sprites/clipped_clair.png",
+            "sprites/clipped_elly.png",
+            "sprites/clipped_emmett.png",
+            "sprites/clipped_fox.png",
+            "sprites/clipped_sparky.png",
+            "sprites/clipped_tyler.png"
         ]
 
         self.char_png = pygame.image.load(self.images[self.displayed_character])
@@ -47,7 +54,14 @@ class Menu:
             "sprites/pfp_eli.png",
             "sprites/pfp_micheal.png",
             "sprites/pfp_hoyt.png",
-            "sprites/pfp_reid.png"
+            "sprites/pfp_reid.png",
+            "sprites/pfp_brayden.png",
+            "sprites/pfp_claire.png",
+            "sprites/pfp_elly.png",
+            "sprites/pfp_emmet.png",
+            "sprites/pfp_fox.png",
+            "sprites/pfp_sparky.png",
+            "sprites/pfp_tyler.png",
         ]
 
         pfp_png = pygame.image.load(pfp_img[x])

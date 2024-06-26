@@ -75,7 +75,7 @@ def main():
         screen.fill((255,255,255))
         pressed_keys = pygame.key.get_pressed()
         screen.blit(grass2, (0,0))
-        pfp.draw_pfp(char_pfp % 8)
+        pfp.draw_pfp(char_pfp % 15)
         screen.blit(bar, (0, 0))
 
         the_hero.draw()
