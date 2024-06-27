@@ -298,6 +298,7 @@ def main():
                 pressed_keys = pygame.key.get_pressed()
                 if pressed_keys[pygame.K_p]:
                     sys.exit()
+            print(score)
             screen.fill((0,0,0))
             yes = pygame.image.load("sprites/Game_Over.png")
             screen.blit(yes, (screen.get_width() // 2 - 250, screen.get_height() // 2 - 250))
