@@ -37,6 +37,7 @@ def main():
     height = screen.get_height()
     clock2 = time.time()
     clock3 = 0
+    clock4 = 0
     hurt = []
     healthy = []
     score = 0
@@ -205,17 +206,14 @@ def main():
                     if Camperhurt not in camperstoremovehurt:
                         pygame.mixer.Sound.play(grasshole_sound)
                         score += 100
-                        player_hp += 1
+                        # player_hp += 1
                         camperstoremovehurt.append(Camperhurt)
                         the_hero.bullets.remove(bullet)
 
 
             Camperhurt.move(the_hero.x, the_hero.y)
             Camperhurt.draw(the_hero.x, the_hero.y)
-            # hero_hit_box2 = pygame.Rect(the_hero.x, the_hero.y, the_hero.image.get_width(), the_hero.image.get_height())
-
-            if Camperhurt.hitby(the_hero, the_hero.x, the_hero.y):
-                player_hp += 1
+            # hero_hit_box2 = pygame.Rect(the_hero.x, the_hero.y, the_hero.image.get_width(), the_hero.image.get_height())a
 
         for Camperhurt in camperstoremovehurt:
             hurt.remove(Camperhurt)
@@ -242,6 +240,21 @@ def main():
             #     player_hp += 1
         for camperhealthy in camperstoremovehealthy:
             healthy.remove(camperhealthy)
+
+
+        for camperhurt in hurt:
+            if camperhurt in hurt:
+                if time.time() - clock4 > 1:
+                    if the_hero.hit_by_hurt(camperhurt):
+                        player_hp += 1
+                        clock4 = time.time()
+
+        for camperhealthy in healthy:
+            if camperhealthy in healthy:
+                if time.time() - clock4 > 1:
+                    if the_hero.hit_by_healthy(camperhealthy):
+                        player_hp += 1
+                        clock4 = time.time()
 
         #pfp.play_sound(char_pfp)
 

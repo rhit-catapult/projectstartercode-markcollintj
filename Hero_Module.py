@@ -70,10 +70,19 @@ class Hero:
         last_fire_time = time.time()
         return last_fire_time
 
-    def hit_by(self, hurt_zombies, healthy_zombie):
+    def hit_by_healthy(self, healthy_zombie):
         self.hit_box = pygame.Rect(self.x, self.y, self.image.get_width(), self.image.get_height())
-        return self.hit_box.colliderect(hurt_zombies.hit_box) or self.hit_box.colliderect(healthy_zombie.hit_box)
+        return self.hit_box.colliderect(healthy_zombie.hit_box)
 
+    def hit_by_hurt(self, hurt_zombie):
+        if hurt_zombie.hit_box is None:
+            return False
+        print("My logs")
+        print(self.x, self.y, self.image.get_width(), self.image.get_height())
+        print(hurt_zombie)
+        print(hurt_zombie.hit_box)
+        self.hit_box = pygame.Rect(self.x, self.y, self.image.get_width(), self.image.get_height())
+        return self.hit_box.colliderect(hurt_zombie.hit_box)
 
 
     #return hero_hit_box.collidepoint(power_up.x, power_up.y)

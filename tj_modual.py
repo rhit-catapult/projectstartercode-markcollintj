@@ -19,7 +19,7 @@ class Cammperhealthy:
         self.screen = screen
         self.center_x = x
         self.center_y = y
-        self.speed = 1
+        self.speed = 4
         self.imageunharmedright = unharmedright
         self.imageunharmedleft = unharmedleft
         self.imageunharmedup = unharmedup
@@ -96,6 +96,30 @@ class Cammperhealthy:
             self.screen.blit(self.imageunharmedleftup, (self.x, self.y))
         else:
             self.screen.blit(self.imageunharmedrightup, (self.x, self.y))
+        if self.speedx > 0 and self.speedy == 0:
+            self.hit_box = pygame.Rect(self.x, self.y, self.imageunharmedright.get_width(),
+                                        self.imageunharmedright.get_height())
+        elif self.speedx < 0 and self.speedy == 0:
+            self.hit_box = pygame.Rect(self.x, self.y, self.imageunharmedleft.get_width(),
+                                        self.imageunharmedleft.get_height())
+        elif self.speedx == 0 and self.speedy > 0:
+            self.hit_box = pygame.Rect(self.x, self.y, self.imageunharmeddown.get_width(),
+                            self.imageunharmeddown.get_height())
+        elif self.speedx == 0 and self.speedy < 0:
+            self.hit_box = pygame.Rect(self.x, self.y, self.imageunharmedup.get_width(),
+                            self.imageunharmedup.get_height())
+        elif self.speedx > 0 and self.speedy > 0:
+            self.hit_box = pygame.Rect(self.x, self.y, self.imageunharmedleftdown.get_width(),
+                                        self.imageunharmedleftdown.get_height())
+        elif self.speedx < 0 and self.speedy > 0:
+            self.hit_box = pygame.Rect(self.x, self.y, self.imageunharmedrightdown.get_width(),
+                            self.imageunharmedrightdown.get_height())
+        elif self.speedx > 0 and self.speedy < 0:
+            self.hit_box = pygame.Rect(self.x, self.y, self.imageunharmedleftup.get_width(),
+                                        self.imageunharmedleftup.get_height())
+        else:
+             self.hit_box = pygame.Rect(self.x, self.y, self.imageunharmedrightup.get_width(),
+                                        self.imageunharmedrightup.get_width())
 
         # if self.hit_box is not None:
         #     pygame.draw.rect(self.screen, rect=self.hit_box, color="black")
@@ -166,7 +190,7 @@ class Cammperhurt:
         self.screen = screen
         self.center_x = x
         self.center_y = y
-        self.speed = 0.5
+        self.speed = 2
         self.imageharmedright = harmedright
         self.imageharmedleft = harmedleft
         self.imageharmedup = harmedup
@@ -241,6 +265,30 @@ class Cammperhurt:
             self.screen.blit(self.imageharmedleftup, (self.x, self.y))
         elif self.speedx > 0 and self.speedy < 0:
             self.screen.blit(self.imageharmedrightup, (self.x, self.y))
+        if self.speedx > 0 and self.speedy == 0:
+            self.hit_box = pygame.Rect(self.x, self.y, self.imageharmedright.get_width(),
+                                       self.imageharmedright.get_height())
+        elif self.speedx < 0 and self.speedy == 0:
+            self.hit_box = pygame.Rect(self.x, self.y, self.imageharmedleft.get_width(),
+                                       self.imageharmedleft.get_height())
+        elif self.speedx == 0 and self.speedy > 0:
+            self.hit_box = pygame.Rect(self.x, self.y, self.imageharmeddown.get_width(),
+                                       self.imageharmeddown.get_height())
+        elif self.speedx == 0 and self.speedy < 0:
+            self.hit_box = pygame.Rect(self.x, self.y, self.imageharmedup.get_width(),
+                                       self.imageharmedup.get_height())
+        elif self.speedx > 0 and self.speedy > 0:
+            self.hit_box = pygame.Rect(self.x, self.y, self.imageharmedleftdown.get_width(),
+                                               self.imageharmedleftdown.get_height())
+        elif self.speedx < 0 and self.speedy > 0:
+             self.hit_box = pygame.Rect(self.x, self.y, self.imageharmedrightdown.get_width(),
+                                               self.imageharmedrightdown.get_height())
+        elif self.speedx > 0 and self.speedy < 0:
+            self.hit_box = pygame.Rect(self.x, self.y, self.imageharmedleftup.get_width(),
+                                               self.imageharmedleftup.get_height())
+        else:
+            self.hit_box = pygame.Rect(self.x, self.y, self.imageharmedrightup.get_width(),
+                                       self.imageharmedrightup.get_width())
 
         # if self.hit_box is not None:
         #     pygame.draw.rect(self.screen, rect=self.hit_box, color="black")
