@@ -31,7 +31,6 @@ def main():
     pygame.mixer.music.play(-1)
     pygame.mixer.music.set_volume(.5)
     clock = pygame.time.Clock()
-    bar = pygame.image.load("sprites/health_bar.png")
     pfp = opening_screen.Menu(screen)
     char_pfp = 0
     width = screen.get_width()
@@ -43,6 +42,16 @@ def main():
     score = 0
     font1 = pygame.font.SysFont("impact", 20)
     #caption1 = font1.render(score , True, pygame.Color("White"))
+    player_hp = 0
+
+    bar_list = [
+        "sprites/health_bar.png",
+        "sprites/3hp.png",
+        "sprites/2hp.png",
+        "sprites/1hp.png"
+    ]
+
+    bar = pygame.image.load(bar_list[player_hp])
 
     gasshole = [
         "grasshole/aaron.mp3",
@@ -196,11 +205,18 @@ def main():
                     if Camperhurt not in camperstoremovehurt:
                         pygame.mixer.Sound.play(grasshole_sound)
                         score += 100
-
+                        player_hp += 1
                         camperstoremovehurt.append(Camperhurt)
                         the_hero.bullets.remove(bullet)
+
+
             Camperhurt.move(the_hero.x, the_hero.y)
             Camperhurt.draw(the_hero.x, the_hero.y)
+            # hero_hit_box2 = pygame.Rect(the_hero.x, the_hero.y, the_hero.image.get_width(), the_hero.image.get_height())
+
+            if Camperhurt.hitby(the_hero, the_hero.x, the_hero.y):
+                player_hp += 1
+
         for Camperhurt in camperstoremovehurt:
             hurt.remove(Camperhurt)
         camperstoremovehealthy = []
@@ -213,16 +229,25 @@ def main():
                         camperhurt = tj_modual.Cammperhurt(screen, camperhealthy.center_x, camperhealthy.center_y, harmedright,
                                                            harmedleft, harmedup, harmeddown, harmedleftdown,
                                                            harmedleftup, harmedrightup, harmedrightdown)
+
                         hurt.append(camperhurt)
                         the_hero.bullets.remove(bullet)
+
+            # if camperhealthy.hitby(the_hero, the_hero.x, the_hero.y):
+            #         player_hp += 1
+
             camperhealthy.move(the_hero.x, the_hero.y)
             camperhealthy.draw(the_hero.x, the_hero.y)
+            # if the_hero.hit_by2(camperhealthy.hit_box):
+            #     player_hp += 1
         for camperhealthy in camperstoremovehealthy:
             healthy.remove(camperhealthy)
 
         #pfp.play_sound(char_pfp)
 
-
+        # for camperhealthy in healthy:
+        #     if camperhealthy.hitby(the_hero, the_hero.x, the_hero.y):
+        #         player_hp += 1
 
         #if event.type == pygame.MOUSEBUTTONDOWN:
         #    the_hero.shoot()
@@ -241,8 +266,15 @@ def main():
         #screen.blit(bar, (0, 0))
         screen.blit(caption1, (140,30))
         the_hero.rotate()
+
+        #bar = pygame.image.load(bar_list[player_hp])
+
+        bar = pygame.image.load(bar_list[player_hp])
+
         screen.blit(bar, (0, 0))
         # don't forget the update, otherwise nothing will show up!
+        print(player_hp)
+
         pygame.display.update()
 
 

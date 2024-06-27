@@ -32,7 +32,8 @@ class Hero:
         self.bullets = []
         self.angle = 0
         self.mouse_pos = pygame.mouse.get_pos()
-        self.hit_box = (self.image.get_width(),self.image.get_height())
+        self.hit_box = pygame.Rect(self.x, self.y, self.image.get_width(), self.image.get_height())
+
     def move(self, xa, ya):
 
         self.y += ya
@@ -69,11 +70,19 @@ class Hero:
         last_fire_time = time.time()
         return last_fire_time
 
-    def hit_by(self, power_up):
-        hero_hit_box = pygame.Rect(self.x, self.y, self.image.get_width(), self.image.get_height())
+    # def hit_by(self, hurt_zombies):
+    #
+    #     return self.hit_box.colliderect(hurt_zombies)
+    #
+    #
+    #
+    # def hit_by2(self, healthy_zombie):
+    #
+    #     return self.hit_box.colliderect(healthy_zombie)
 
-        return hero_hit_box.colliderect(power_up.hit_box)
-         #return hero_hit_box.collidepoint(power_up.x, power_up.y)
+
+
+    #return hero_hit_box.collidepoint(power_up.x, power_up.y)
 
     # hero_hit_box = pygame.Rect(self.x, self.y, self.image.get_width(), self.image.get_height())
         #
