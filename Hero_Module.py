@@ -70,15 +70,9 @@ class Hero:
         last_fire_time = time.time()
         return last_fire_time
 
-    # def hit_by(self, hurt_zombies):
-    #
-    #     return self.hit_box.colliderect(hurt_zombies)
-    #
-    #
-    #
-    # def hit_by2(self, healthy_zombie):
-    #
-    #     return self.hit_box.colliderect(healthy_zombie)
+    def hit_by(self, hurt_zombies, healthy_zombie):
+        self.hit_box = pygame.Rect(self.x, self.y, self.image.get_width(), self.image.get_height())
+        return self.hit_box.colliderect(hurt_zombies.hit_box) or self.hit_box.colliderect(healthy_zombie.hit_box)
 
 
 
