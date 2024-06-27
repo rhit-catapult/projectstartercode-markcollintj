@@ -49,7 +49,8 @@ def main():
         "sprites/health_bar.png",
         "sprites/3hp.png",
         "sprites/2hp.png",
-        "sprites/1hp.png"
+        "sprites/1hp.png",
+        "sprites/Game_Over.png"
     ]
 
     bar = pygame.image.load(bar_list[player_hp])
@@ -286,7 +287,22 @@ def main():
 
         screen.blit(bar, (0, 0))
         # don't forget the update, otherwise nothing will show up!
-        print(player_hp)
+
+
+
+        while player_hp >= 4:
+            clock.tick(60)
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    sys.exit()
+                pressed_keys = pygame.key.get_pressed()
+                if pressed_keys[pygame.K_p]:
+                    sys.exit()
+            screen.fill((0,0,0))
+            yes = pygame.image.load("sprites/Game_Over.png")
+            screen.blit(yes, (screen.get_width() // 2 - 250, screen.get_height() // 2 - 250))
+            pygame.display.update()
+
 
         pygame.display.update()
 
