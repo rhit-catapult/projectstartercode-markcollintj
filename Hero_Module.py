@@ -77,10 +77,7 @@ class Hero:
     def hit_by_hurt(self, hurt_zombie):
         if hurt_zombie.hit_box is None:
             return False
-        print("My logs")
-        print(self.x, self.y, self.image.get_width(), self.image.get_height())
-        print(hurt_zombie)
-        print(hurt_zombie.hit_box)
+
         self.hit_box = pygame.Rect(self.x, self.y, self.image.get_width(), self.image.get_height())
         return self.hit_box.colliderect(hurt_zombie.hit_box)
 
