@@ -35,7 +35,7 @@ def main():
     char_pfp = 0
     width = screen.get_width()
     height = screen.get_height()
-    clock2 = time.time()
+    clock2 = 0
     clock3 = 0
     clock4 = 0
     hurt = []
@@ -159,6 +159,8 @@ def main():
             the_hero.move(5, 0)
         caption1 = font1.render(f"{score}", True, pygame.Color("White"))
 
+        if not clock2:
+            clock2 = time.time()
         grasshole_sound = pygame.mixer.Sound(gasshole[char_pfp % 15])
         if time.time() - clock3 > 3:
             if not math.floor(time.time() - clock2) % 5:
@@ -302,6 +304,8 @@ def main():
             screen.fill((0,0,0))
             yes = pygame.image.load("sprites/Game_Over.png")
             screen.blit(yes, (screen.get_width() // 2 - 250, screen.get_height() // 2 - 250))
+            caption2 = font1.render(f"your score:{score}", True, pygame.Color("White"))
+            screen.blit(caption2, (screen.get_width() // 2 - 250, screen.get_height() // 2 - 250))
             pygame.display.update()
 
 
